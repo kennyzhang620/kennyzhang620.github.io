@@ -5,24 +5,7 @@ const CACHE_NAME = 'static-cache-v1';
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
-    'index.html',
-    'logo.png',
-    'Build/InfiniteBlockMayhem.data.unityweb',
-    'Build/InfiniteBlockMayhem.json',
-    'Build/InfiniteBlockMayhem.wasm.code.unityweb',
-    'Build/InfiniteBlockMayhem.wasm.framework.unityweb',
-    'Build/UnityLoader.js',
-    'TemplateData/favicon.ico',
-    'TemplateData/fullscreen.png',
-    'TemplateData/progressEmpty.Dark.png',
-    'TemplateData/progressEmpty.Light.png',
-    'TemplateData/progressFull.Dark.png',
-    'TemplateData/progressFull.Light.png',
-    'TemplateData/progressLogo.Dark.png',
-    'TemplateData/progressLogo.Light.png',
-    'TemplateData/style.css',
-    'TemplateData/UnityProgress.js',
-    'TemplateData/webgl-logo.png',
+    'index.html'
 ];
 
 self.addEventListener('install', (evt) => {
