@@ -12,7 +12,5 @@
   "theme_color": "#000000",
   "background_color": "#2196f3",
   "display": "standalone",
-  "orientation": "landscape",
-  "scope": "https://kennyzhang620.github.io/InfiniteBlockMayhem/",
-  "start_url": "https://kennyzhang620.github.io/InfiniteBlockMayhem/"
+  "orientation": "landscape"
 }
