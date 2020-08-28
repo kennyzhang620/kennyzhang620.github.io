@@ -6,11 +6,11 @@ const CACHE_NAME = 'static-cache-v1';
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
     '../InfiniteBlockMayhem/index.html',
-    '../InfiniteBlockMayhem/InfiniteBlockMayhem.data.unityweb',
-    '../InfiniteBlockMayhem/InfiniteBlockMayhem.json',
-    '../InfiniteBlockMayhem/InfiniteBlockMayhem.wasm.code.unityweb',
-    '../InfiniteBlockMayhem/InfiniteBlockMayhem.wasm.framework.unityweb',
-    '../InfiniteBlockMayhem/UnityLoader.js',
+    '../InfiniteBlockMayhem/Build/sInfiniteBlockMayhem.data.unityweb',
+    '../InfiniteBlockMayhem/Build/InfiniteBlockMayhem.json',
+    '../InfiniteBlockMayhem/Build/InfiniteBlockMayhem.wasm.code.unityweb',
+    '../InfiniteBlockMayhem/Build/InfiniteBlockMayhem.wasm.framework.unityweb',
+    '../InfiniteBlockMayhem/Build/UnityLoader.js',
     '../InfiniteBlockMayhem/TemplateData/favicon.ico',
     '../InfiniteBlockMayhem/TemplateData/fullscreen.png',
     '../InfiniteBlockMayhem/TemplateData/progressEmpty.Dark.png',
