@@ -1,0 +1,9 @@
+{
+  "name": "Infinite Block Madness!",
+  "theme_color": "#000000",
+  "background_color": "#2196f3",
+  "display": "standalone", /* Could be "fullscreen", "standalone", "minimal-ui", or "browser" */
+  "orientation": "landscape", /* Could be "landscape" or "portrait" */
+  "scope": "/",
+  "start_url": "/"
+}
