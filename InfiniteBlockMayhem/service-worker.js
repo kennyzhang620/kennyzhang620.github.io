@@ -55,13 +55,13 @@ self.addEventListener('activate', (evt) => {
 self.addEventListener('fetch', (evt) => {
     console.log('[ServiceWorker] Fetch', evt.request.url);
     // CODELAB: Add fetch event handler here.
-
     evt.respondWith(
         fetch(evt.request)
             .catch(() => {
                 return caches.open(CACHE_NAME)
                     .then((cache) => {
-                        return cache.match(evt.request);
+                        return cache.match('offline.html');
                     });
             })
+    );
 });
