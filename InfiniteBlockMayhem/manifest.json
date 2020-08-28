@@ -1,9 +1,18 @@
 {
   "name": "Infinite Block Madness!",
+  "short_name": "Infinite Block Madness!",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "375x367",
+      "type": "image/png"
+    }
+  ],
+  "description": "A randomly generated platformer game using recursion.",
   "theme_color": "#000000",
   "background_color": "#2196f3",
   "display": "standalone",
   "orientation": "landscape",
   "scope": "/",
-  "start_url": "/"
+  "start_url": "."
 }
