@@ -6,6 +6,7 @@ const CACHE_NAME = 'static-cache-v1';
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
     'index.html',
+    'logo.png',
     'Build/InfiniteBlockMayhem.data.unityweb',
     'Build/InfiniteBlockMayhem.json',
     'Build/InfiniteBlockMayhem.wasm.code.unityweb',
