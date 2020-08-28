@@ -11,7 +11,7 @@
   "description": "A randomly generated platformer game using recursion.",
   "theme_color": "#000000",
   "background_color": "#2196f3",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "landscape",
   "start_url": "../InfiniteBlockMayhem/index.html"
 }
