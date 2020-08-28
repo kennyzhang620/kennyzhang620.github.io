@@ -13,6 +13,6 @@
   "background_color": "#2196f3",
   "display": "standalone",
   "orientation": "landscape",
-  "scope": "https://kennyzhang620.github.io/InfiniteBlockMayhem/",
+  "scope": "https://kennyzhang620.github.io/InfiniteBlockMayhem/Build/",
   "start_url": "https://kennyzhang620.github.io/InfiniteBlockMayhem/"
 }
