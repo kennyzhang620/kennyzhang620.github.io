@@ -3,7 +3,7 @@
   "short_name": "Infinite Block Madness!",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "logo.png",
       "sizes": "375x367",
       "type": "image/png"
     }
