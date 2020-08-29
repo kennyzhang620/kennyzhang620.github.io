@@ -2,10 +2,11 @@
 
 // CODELAB: Update cache names any time any of the cached files change.
 const CACHE_NAME = 'static-cache-v1';
+const DATA_CACHE = 'dynamic-cache-v1';
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
-    'offline.html'
+    'index.html'
 ];
 
 self.addEventListener('install', (evt) => {
@@ -26,7 +27,7 @@ self.addEventListener('activate', (evt) => {
     evt.waitUntil(
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
-                if (key !== CACHE_NAME) {
+                if (key !== CACHE_NAME && key !== DATA_CACHE) {
                     console.log('[ServiceWorker] Removing old cache', key);
                     return caches.delete(key);
                 }
@@ -40,12 +41,17 @@ self.addEventListener('fetch', (evt) => {
     console.log('[ServiceWorker] Fetch', evt.request.url);
     // CODELAB: Add fetch event handler here.
     evt.respondWith(
-        fetch(evt.request)
-            .catch(() => {
-                return caches.open(CACHE_NAME)
-                    .then((cache) => {
-                        return cache.match('offline.html');
-                    });
-            })
-    );
+        caches.open(DATA_CACHE).then((cache) => {
+            return fetch(evt.request)
+                .then((response) => {
+                    // If the response was good, clone it and store it in the cache.
+                    if (response.status === 200) {
+                        cache.put(evt.request.url, response.clone());
+                    }
+                    return response;
+                }).catch((err) => {
+                    // Network request failed, try to get it from the cache.
+                    return cache.match(evt.request);
+                });
+        }));
 });
