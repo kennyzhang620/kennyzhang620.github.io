@@ -52,6 +52,7 @@ self.addEventListener('fetch', (evt) => {
                     return response;
                 }).catch((err) => {
                     // Network request failed, try to get it from the cache.
+                    console.log("Loaded data onto cache. Reason: " + err);
                     return cache.match(evt.request);
                 });
         }));
