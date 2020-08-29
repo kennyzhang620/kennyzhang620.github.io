@@ -42,7 +42,7 @@ self.addEventListener('fetch', (evt) => {
     // CODELAB: Add fetch event handler here.
     evt.respondWith(
         caches.open(DATA_CACHE).then((cache) => {
-            return fetch(evt.request)
+            return fetch(evt.request, { timeout: 500 })
                 .then((response) => {
                     // If the response was good, clone it and store it in the cache.
                     if (response.status === 200) {
@@ -50,7 +50,7 @@ self.addEventListener('fetch', (evt) => {
                         cache.put(evt.request.url, response.clone());
                     }
                     return response;
-                }).timeout(200).catch((err) => {
+                }).catch((err) => {
                     // Network request failed, try to get it from the cache.
                     console.log("Loaded data onto cache. Reason: " + err);
                     return cache.match(evt.request);
