@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
 
 <head>
@@ -108,47 +108,47 @@
     </style>
 </head>
 
-  <body>
+<body>
     <div id="gameContainer"></div>
     <div id="loader">
-      <img class="logo" src="banner.png">
-      <div class="spinner"></div>
-      <div class="progress"><div class="full"></div></div>
+        <img class="logo" src="banner.png">
+        <div class="spinner"></div>
+        <div class="progress"><div class="full"></div></div>
     </div>
-  </body>
+</body>
 
-  <script src="Build/UnityLoader.js"></script>
-  <script>
-      // CODELAB: Register service worker
+<script src="Build/UnityLoader.js"></script>
+<script>
+    // CODELAB: Register service worker
     if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('../InfiniteBlockMayhem/service-worker.js')
-        .then((reg) => {
-          console.log('Service worker registered.', reg);
-            });
-     });
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('../InfiniteBlockMayhem/service-worker.js')
+                .then((reg) => {
+                    console.log('Service worker registered.', reg);
+                });
+        });
     }
 
-  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/InfiniteBlockMayhem.json", {onProgress: UnityProgress});
-  function UnityProgress(gameInstance, progress) {
-    if (!gameInstance.Module) {
-      return;
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/InfiniteBlockMayhem.json", { onProgress: UnityProgress });
+    function UnityProgress(gameInstance, progress) {
+        if (!gameInstance.Module) {
+            return;
+        }
+        const loader = document.querySelector("#loader");
+        if (!gameInstance.progress) {
+            const progress = document.querySelector("#loader .progress");
+            progress.style.display = "block";
+            gameInstance.progress = progress.querySelector(".full");
+            loader.querySelector(".spinner").style.display = "none";
+        }
+        gameInstance.progress.style.transform = `scaleX(${progress})`;
+        if (progress === 1 && !gameInstance.removeTimeout) {
+            gameInstance.removeTimeout = setTimeout(function () {
+                loader.style.display = "none";
+            }, 2000);
+        }
     }
-    const loader = document.querySelector("#loader");
-    if (!gameInstance.progress) {
-      const progress = document.querySelector("#loader .progress");
-      progress.style.display = "block";
-      gameInstance.progress = progress.querySelector(".full");
-      loader.querySelector(".spinner").style.display = "none";
-    }
-    gameInstance.progress.style.transform = `scaleX(${progress})`;
-    if (progress === 1 && !gameInstance.removeTimeout) {
-      gameInstance.removeTimeout = setTimeout(function() {
-          loader.style.display = "none";
-      }, 2000);
-    }
-  }
-  </script>
+</script>
 
 </html>
 
