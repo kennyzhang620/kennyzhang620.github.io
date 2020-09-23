@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
 
 <head>
@@ -119,16 +119,6 @@
 
 <script src="Build/UnityLoader.js"></script>
 <script>
-    // CODELAB: Register service worker
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('../InfiniteBlockMayhem/service-worker.js')
-                .then((reg) => {
-                    console.log('Service worker registered.', reg);
-                });
-        });
-    }
-
     var gameInstance = UnityLoader.instantiate("gameContainer", "Build/InfiniteBlockMayhem.json", { onProgress: UnityProgress });
     function UnityProgress(gameInstance, progress) {
         if (!gameInstance.Module) {
