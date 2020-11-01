@@ -1,138 +1,171 @@
 ﻿<!DOCTYPE html>
-<html lang="en-us">
-
+<!-- Template by Quackit.com -->
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="logo.png">
-    <title>Block-Align+</title>
-    <style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        html {
-            box-sizing: border-box;
-        }
+    <title>My Games - Kenny Zhang</title>
 
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
 
-        body {
-            margin: 0;
-            background: #444;
-        }
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
 
-        #gameContainer {
-            width: 100vw;
-            height: 93vh;
-        }
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-        canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-            /* try to handle mobile dialog */
-            canvas + * {
-                z-index: 2;
-            }
-
-        .logo {
-            display: block;
-            max-width: 100vw;
-            max-height: 70vh;
-        }
-
-        .progress {
-            margin: 1.5em;
-            border: 1px solid white;
-            width: 50vw;
-            display: none;
-        }
-
-            .progress .full {
-                margin: 2px;
-                background: white;
-                height: 1em;
-                transform-origin: top left;
-            }
-
-        #loader {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .spinner,
-        .spinner:after {
-            border-radius: 50%;
-            width: 5em;
-            height: 5em;
-        }
-
-        .spinner {
-            margin: 10px;
-            font-size: 10px;
-            position: relative;
-            text-indent: -9999em;
-            border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-left: 1.1em solid #ffffff;
-            transform: translateZ(0);
-            animation: spinner-spin 1.1s infinite linear;
-        }
-
-        @keyframes spinner-spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
 </head>
 
-  <body>
-    <div id="gameContainer"></div>
-    <div id="loader">
-      <img class="logo" src="logo.png">
-      <div class="spinner"></div>
-      <div class="progress"><div class="full"></div></div>
-    </div>
-  </body>
+<body>
 
-  <script src="Build/UnityLoader.js"></script>
-  <script>
-  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/kennyzhang620.github.io.json", {onProgress: UnityProgress});
-  function UnityProgress(gameInstance, progress) {
-    if (!gameInstance.Module) {
-      return;
-    }
-    const loader = document.querySelector("#loader");
-    if (!gameInstance.progress) {
-      const progress = document.querySelector("#loader .progress");
-      progress.style.display = "block";
-      gameInstance.progress = progress.querySelector(".full");
-      loader.querySelector(".spinner").style.display = "none";
-    }
-    gameInstance.progress.style.transform = `scaleX(${progress})`;
-    if (progress === 1 && !gameInstance.removeTimeout) {
-      gameInstance.removeTimeout = setTimeout(function() {
-          loader.style.display = "none";
-      }, 2000);
-    }
-  }
-  </script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                	<img class="img" src="HomeIcon.png" alt="" width="30" height="30"></img> 
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li class="active">
+                        <a href="index.html">My Games</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">My Games
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-6 portfolio-item">
+                <a href="Block-Align/index.html">
+                    <img class="img-responsive" src="Block-Align/logo.png" alt="">
+                </a>
+                <h3>
+                    <a href="Block-Align/index.html">Block-Align</a>
+                </h3>
+                <p>A Tetris-inspired game where players must place blocks to form lines to score points and prevent blocks from stacking to the top of the board.</p>
+            </div>
+            <div class="col-md-6 portfolio-item">
+                <a href="InfiniteBlockMayhem/index.html">
+                    <img class="img-responsive" src="InfiniteBlockMayhem/logo.png" alt="">
+                </a>
+                <h3>
+                    <a href="Block-Align/index.html">Infinite Block Madness!</a>
+                </h3>
+                <p>A 3D platformer game where players must traverse a infinitely randomly generated level and score the highest by lasting as long as possible and collecting items and dodging obstacles.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+	
+	<footer>
+		<div class="footer-blurb">
+			<div class="container">
+                <div class="row">
+                    <div class="col-sm-4 footer-blurb-item">
+                        <a href="https://www.instagram.com/kenny_zhang6179/?hl=en">
+                            <img class="img" src="glyph-logo_May2016.png" alt="" width="80" height="80">
+                        </a>
+                        <h3>
+                            <a href="https://www.instagram.com/kenny_zhang6179/?hl=en">Instagram</a>
+                        </h3>
+                    </div>
+                    <div class="col-sm-4 footer-blurb-item">
+                        <a href="https://www.linkedin.com/in/kam-to-keeny-kenny-zhang-b2570519b/">
+                            <img class="img" src="LI-In-Bug.png" alt="" width="80" height="80">
+                        </a>
+                        <h3>
+                            <a href="https://www.linkedin.com/in/kam-to-keeny-kenny-zhang-b2570519b/">LinkedIn</a>
+                        </h3>
+                    </div>
+                    <div class="col-sm-4 footer-blurb-item">
+                        <a href="https://github.com/kennyzhang620">
+                            <img class="img" src="GitHub-Mark-120px-plus.png" alt="" width="80" height="80">
+                        </a>
+                        <h3>
+                            <a href="https://github.com/kennyzhang620">GitHub</a>
+                        </h3>
+                    </div>
+
+                </div>
+				<!-- /.row -->	
+			</div>
+        </div>
+        
+        <div class="copyright">
+        	<div class="container">
+        		<p>Copyright &copy; 2020 Kenny Zhang</p>
+        	</div>
+        </div>
+	</footer>
+
+	
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
 
 </html>
-
