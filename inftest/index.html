@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
 
 <head>
@@ -7,7 +7,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="google-site-verification" content="Z7UN_0wixgfU1NCM8GBne8ErVuW7AanCZsQDcEafyEo" />
-    <meta name="description" content="A 3D platformer game where players must traverse a infinitely randomly generated level and score the highest by lasting as long as possible and collecting items and dodging obstacles. What are you waiting for? Play now and try to dominate the leaderboards, if you can!">
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="manifest" href="manifest.json">
 
@@ -120,7 +119,17 @@
 
 <script src="Build/UnityLoader.js"></script>
 <script>
-    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/inftest.json", { onProgress: UnityProgress });
+    // CODELAB: Register service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('../InfiniteBlockMayhem/service-worker.js')
+                .then((reg) => {
+                    console.log('Service worker registered.', reg);
+                });
+        });
+    }
+
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/InfiniteBlockMayhem.json", { onProgress: UnityProgress });
     function UnityProgress(gameInstance, progress) {
         if (!gameInstance.Module) {
             return;
