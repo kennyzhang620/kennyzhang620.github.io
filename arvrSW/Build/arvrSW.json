@@ -5,7 +5,7 @@
 "dataUrl": "arvrSW.data.unityweb",
 "wasmCodeUrl": "arvrSW.wasm.code.unityweb",
 "wasmFrameworkUrl": "arvrSW.wasm.framework.unityweb",
-"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"graphicsAPI": ["WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Dark",
 "backgroundColor": "#231F20",
