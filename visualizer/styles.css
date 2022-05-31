@@ -1,0 +1,54 @@
+﻿nav {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:large;
+    padding: 10px;
+}
+body
+{
+}
+
+.search {
+    width:100%;
+    padding: 5px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
+.Settings_Pane {
+    display:block;
+    position:absolute;
+    z-index:500;
+}
+#homebtn {
+    width:60px;
+    height: 60px;
+
+    position: relative;
+    top: -100px;
+    right: 10px;
+    padding: 10px;
+    float:right;
+    z-index: 400;
+}
+
+#settingsbtn {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    top: -470px;
+    right: -70px;
+    padding: 10px;
+    float: right;
+    z-index: 400;
+} 
+.map_container {
+
+}
+.map {
+    height: 480px;
+    z-index: 0;
+}

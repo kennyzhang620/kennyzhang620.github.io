@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet"
+          href="styles.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+          integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+          crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+            integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+            crossorigin=""></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
+    <script src="jquery.csv.js"></script>
+
+    <title>Data and Research Visualization Map</title>
+    
+</head>
+<body>
+    <nav><image id ="logo" src="Logo.png"></image>Data and Research Visualization Map
+    </nav>
+    <input type="text" id="search" class="search" placeholder="Enter a location to go to..." />
+    <div class="map_container">
+        <div class="map" id="map"></div>
+        <div class="Settings_Pane">
+            SETTINGS
+        </div>
+
+        <input type="image" src="HomeIcon.png" id="homebtn">
+        <input type="image" src="Settings.png" id="settingsbtn">
+    </div>
+
+
+
+    <script src="datavis_main.js"></script>
+</body>
+
+</html>
