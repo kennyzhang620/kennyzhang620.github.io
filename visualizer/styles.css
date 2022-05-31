@@ -19,9 +19,15 @@ body
 }
 
 .Settings_Pane {
-    display:block;
-    position:absolute;
-    z-index:500;
+    width: 300px;
+    height: 300px;
+    display: none;
+    right:20px;
+    background-color:white;
+    bottom: 320px;
+    position:fixed;
+    z-index: 500;
+    border: 2px solid grey;
 }
 #homebtn {
     width:60px;
@@ -34,6 +40,7 @@ body
     float:right;
     z-index: 400;
 }
+
 
 #settingsbtn {
     width: 60px;

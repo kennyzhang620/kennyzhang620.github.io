@@ -9,10 +9,13 @@ var parsedD = {};
 var markers = []
 var searchbar = document.getElementById("search");
 var homebutton = document.getElementById("homebtn");
+var settingsBtn = document.getElementById("settingsbtn")
+var settingsPne = document.getElementById("settingspane");
+
 var map = L.map('map').setView(homeCoords, 13);
 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
 
@@ -38,7 +41,7 @@ txtFile.send();
 console.log(parsedD);
 
 function GeoCode(query) {
-	var geocoderURL = "http://dev.virtualearth.net/REST/v1/Locations/" + query + "?" + "o=json&key=" + bingKey;
+	var geocoderURL = "https://dev.virtualearth.net/REST/v1/Locations/" + query + "?" + "o=json&key=" + bingKey;
 
 	var getLatLong = new XMLHttpRequest();
 	var coords = [];
@@ -108,8 +111,29 @@ search.addEventListener('keypress', function (keyin) {
 	}
 });
 
+homebutton.addEventListener('mousedown', function (clicked) {
+	homebutton.style.transform = "scale(0.75,0.75)";
+});
+
 homebutton.addEventListener('click', function (clicked) {
 	map.setView(homeCoords, 15);
 });
+
+homebutton.addEventListener('mouseup', function (clicked) {
+	homebutton.style.transform = "scale(1,1)";
+});
+
+settingsBtn.addEventListener('mousedown', function (clicked) {
+	settingsBtn.style.transform = "scale(0.75,0.75)";
+});
+
+settingsBtn.addEventListener('mouseup', function (clicked) {
+	settingsBtn.style.transform = "scale(1,1)";
+});
+
+settingsBtn.addEventListener('click', function (clicked) {
+	settingsPne.style.display = "block";
+});
+
 
 
