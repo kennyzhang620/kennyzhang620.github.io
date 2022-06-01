@@ -11,6 +11,8 @@ var searchbar = document.getElementById("search");
 var homebutton = document.getElementById("homebtn");
 var settingsBtn = document.getElementById("settingsbtn")
 var settingsPne = document.getElementById("settingspane");
+var filtersBtn = document.getElementById("options");
+var filtersPne = document.getElementById("Filters_Pane");
 
 var map = L.map('map').setView(homeCoords, 13);
 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -101,6 +103,10 @@ filter();
 console.log(GeoCode("SFU"));
 
 
+function closeRightPane() {
+	settingsPne.style.display = "none";
+}
+
 //console.log(parsedD[0].latitude, parsedD[1].longitude);
 search.addEventListener('keypress', function (keyin) {
 	if (keyin.key === 'Enter') {
@@ -133,6 +139,16 @@ settingsBtn.addEventListener('mouseup', function (clicked) {
 
 settingsBtn.addEventListener('click', function (clicked) {
 	settingsPne.style.display = "block";
+});
+
+map.on('movestart', closeRightPane)
+
+filtersBtn.addEventListener('click', function (clicked) {
+
+	if (filtersPne.style.display == "none")
+		filtersPne.style.display = "block";
+	else
+		filtersPne.style.display = "none";
 });
 
 
