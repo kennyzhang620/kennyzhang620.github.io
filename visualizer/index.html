@@ -12,6 +12,8 @@
           integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
           crossorigin="" />
 
+    <link rel="stylesheet" href="additional_styles.css" />
+
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
             crossorigin=""></script>
@@ -66,10 +68,21 @@
 
             <div class="map_container">
                 <div class="Settings_Pane" id="settingspane">
-                    <div class="Style-Options" style="text-align:center;">
+                    <div class="Style-Options" style="text-align:center;padding:2px;">
                         <input type="image" src="default_style_1x1.png" class="image_button" id="style1"/>
                         <input type="image" src="light_style_1x1.png" class="image_button" id="style2"/>
                         <input type="image" src="dark_style_1x1.png" class="image_button" id="style3" />
+                    </div>
+                    <div class="Default_Origin" style="font-family:Calibri; font-weight:600;padding:2px;">
+                        <div class="text_header">
+                            Use Current Location for Origin?
+                            <p style="font-size:small;"> NOTE: This will also set the default starting point for GMap Navigation.</p>
+                           
+                        </div>
+                        <label class="switch">
+                        <input type="checkbox" id="sw_location" > 
+                        <span class="slider round"></span>
+                        </label>
                     </div>
                 </div>
             </div>

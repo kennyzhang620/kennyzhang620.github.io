@@ -81,8 +81,8 @@ body
 }
 
 .image_button {
-    width: 25%;
-    height: 25%;
+    width: 10%;
+    height: 10%;
     padding: 5px;
     border-radius: 3px;
     border: 2px solid grey;
@@ -90,7 +90,7 @@ body
 
 
 .Settings_Pane {
-    width: 40%;
+    width: 20%;
     height: 40%;
     display: none;
     background-color: white;

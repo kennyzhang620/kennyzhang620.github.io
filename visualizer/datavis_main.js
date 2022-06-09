@@ -18,6 +18,7 @@ var filtersPC = document.getElementById("filters_pc");
 var defStyleBtn = document.getElementById('style1');
 var lightStyleBtn = document.getElementById('style2');
 var darkStyleBtn = document.getElementById('style3');
+var sw_Location = document.getElementById('sw_location');
 
 var FiltersActive = false;
 
@@ -25,7 +26,7 @@ var defaultStyle = 'https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-
 var lightStyle = 'https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU';
 var darkStyle = 'https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU';
 
-var redirectGMapNav = 'https://www.google.com/maps/dir//';
+var redirectGMapNav = 'https://www.google.com/maps/dir/';
 
 
 var map = L.map('map').setView(homeCoords, 13);
@@ -217,6 +218,39 @@ darkStyleBtn.addEventListener('click', function (clicked) {
 	changeTileType(darkStyle);
 
 });
+
+function coordsToStr(coords) {
+	return coords[0] + ',' + coords[1];
+}
+
+function navigate(webNav, src, dest) {
+	window.open(webNav + src + '/' + dest + '/');
+}
+
+function failure() {
+	alert("Failed to obtain your location. Check your permissions and try again.")
+	sw_Location.clicked = false;
+}
+sw_Location.addEventListener('click', function (sw_click) {
+	console.log("HW");
+	if (sw_Location.checked) {
+
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (data) {
+				homeCoords = [data.coords.latitude, data.coords.longitude];
+
+			}, failure);
+		}
+		else {
+			alert("Failed to obtain your location. Check your permissions and try again.");
+			sw_Location.clicked = false;
+        }
+    }
+
+});
+
+//navigate(redirectGMapNav, coordsToStr(homeCoords), 'Port Coquitlam')
+
 
 
 
