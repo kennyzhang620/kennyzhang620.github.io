@@ -3,10 +3,10 @@
 // Initialize the map.
 var homeCoords = [49.27767013573553, -122.91268085603525];
 
-var bingKey = "AvEQ1m7_88IHqh6gFAaKUTUuuqbz_zrvMU7HEEu_vX6qXguJOWIQk4WqS-01xSAq"
+var bingKey = "AvEQ1m7_88IHqh6gFAaKUTUuuqbz_zrvMU7HEEu_vX6qXguJOWIQk4WqS-01xSAq";
 var txtFile = new XMLHttpRequest();
 var parsedD = {};
-var markers = []
+var markers = [];
 var searchbar = document.getElementById("search");
 var homebutton = document.getElementById("homebtn");
 var settingsBtn = document.getElementById("settingsbtn")
@@ -15,7 +15,17 @@ var filtersBtn = document.getElementById("options");
 var filtersPne = document.getElementById("filters_norm");
 var filtersPC = document.getElementById("filters_pc");
 
+var defStyleBtn = document.getElementById('style1');
+var lightStyleBtn = document.getElementById('style2');
+var darkStyleBtn = document.getElementById('style3');
+
 var FiltersActive = false;
+
+var defaultStyle = 'https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU';
+var lightStyle = 'https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU';
+var darkStyle = 'https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU';
+
+var redirectGMapNav = 'https://www.google.com/maps/dir//';
 
 
 var map = L.map('map').setView(homeCoords, 13);
@@ -26,7 +36,7 @@ var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 */
 
-var tiles = L.tileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU', {}).addTo(map);
+var tiles = L.tileLayer(defaultStyle, {}).addTo(map);
 map.attributionControl.addAttribution("<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors")
 
 
@@ -191,6 +201,21 @@ filtersBtn.addEventListener('click', function (clicked) {
 
 		FiltersActive = false;
     }
+});
+
+defStyleBtn.addEventListener('click', function (clicked) {
+	changeTileType(defaultStyle);
+
+});
+
+lightStyleBtn.addEventListener('click', function (clicked) {
+	changeTileType(lightStyle);
+
+});
+
+darkStyleBtn.addEventListener('click', function (clicked) {
+	changeTileType(darkStyle);
+
 });
 
 
