@@ -39,22 +39,25 @@ body
     width: 100%;
 }
 .main_view {
-    display:block;
+    display:inline-block;
+    width:100%;
 }
 
-#Filters_Pane {
+.Filters_Pane {
     font-family:Calibri;
-    width: 300px;
+    width: 100%;
     height: 300px;
-    display: none;
+    display: block;
     background-color: white;
     position: relative;
-    top: -480px;
-    right: 0px;
     padding: 10px;
     float: left;
     z-index: 500;
     border: 2px solid grey;
+}
+
+#filters_norm {
+    display:none;
 }
 
 .f_header {
@@ -63,10 +66,14 @@ body
     font-weight:500;
 }
 
-.pi_section {
-    width:98%;
-    text-align:left;
-    display: inline-block;
+#filters_pc {
+    display:none;
+    width: 30%;
+    top:-90px;
+}
+
+#filters_pc2 {
+    top:-480px;
 }
 
 .Settings_Pane {
@@ -79,7 +86,7 @@ body
     right: -150px;
     padding: 10px;
     float: right;
-    z-index: 500;
+    z-index: 200;
     border: 2px solid grey;
 }
 #homebtn {
@@ -91,7 +98,7 @@ body
     right: 10px;
     padding: 10px;
     float:right;
-    z-index: 400;
+    z-index: 100;
 }
 
 
@@ -103,7 +110,7 @@ body
     right: -70px;
     padding: 10px;
     float: right;
-    z-index: 400;
+    z-index: 100;
 }
 .map_container {
 

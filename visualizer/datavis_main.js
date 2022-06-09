@@ -12,13 +12,23 @@ var homebutton = document.getElementById("homebtn");
 var settingsBtn = document.getElementById("settingsbtn")
 var settingsPne = document.getElementById("settingspane");
 var filtersBtn = document.getElementById("options");
-var filtersPne = document.getElementById("Filters_Pane");
+var filtersPne = document.getElementById("filters_norm");
+var filtersPC = document.getElementById("filters_pc");
+
+var FiltersActive = false;
+
 
 var map = L.map('map').setView(homeCoords, 13);
+/*
 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+*/
+
+var tiles = L.tileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU', {}).addTo(map);
+map.attributionControl.addAttribution("<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors")
+
 
 
 
@@ -102,6 +112,9 @@ function filter() {
 filter();
 console.log(GeoCode("SFU"));
 
+function changeTileType(tileURL) {
+	tiles = L.tileLayer(tileURL, {}).addTo(map);
+}
 
 function closeRightPane() {
 	settingsPne.style.display = "none";
@@ -143,12 +156,41 @@ settingsBtn.addEventListener('click', function (clicked) {
 
 map.on('movestart', closeRightPane)
 
+window.addEventListener('resize', function (meta) {
+	if (FiltersActive) {
+		if (window.innerWidth / window.innerHeight >= (4 / 3)) {
+			filtersPC.style.display = "block";
+			filtersPne.style.display = "none";
+		}
+		else {
+			filtersPne.style.display = "block";
+			filtersPC.style.display = "none";
+		}
+
+	}
+});
+
 filtersBtn.addEventListener('click', function (clicked) {
 
-	if (filtersPne.style.display == "none")
-		filtersPne.style.display = "block";
-	else
+	console.log(FiltersActive);
+	if (!FiltersActive) {
+		if (window.innerWidth / window.innerHeight >= (4 / 3)) {
+			filtersPC.style.display = "block";
+			filtersPne.style.display = "none";
+		}
+		else {
+			filtersPne.style.display = "block";
+			filtersPC.style.display = "none";
+		}
+
+		FiltersActive = true;
+	}
+	else {
+		filtersPC.style.display = "none";
 		filtersPne.style.display = "none";
+
+		FiltersActive = false;
+    }
 });
 
 

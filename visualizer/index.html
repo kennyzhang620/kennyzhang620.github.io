@@ -28,6 +28,29 @@
 
     <section class="main_view">
 
+        <div class="Filters_Pane" id="filters_norm">
+            <div class="f_header">
+                Filter Options
+
+                <input type="text" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
+                <input type="text" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
+                <div class="pi_section">
+                    <input type="text" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
+                    <input type="text" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
+                </div>
+                <input type="text" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
+                <div class="fund_section">
+                    <input type="text" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
+                    <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
+                </div>
+                <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
+                <div class="fund_section">
+                    <input type="text" id="filter_lat" placeholder="Latitude" style="width: 30%; padding: 5px; text-align: left;" />
+                    <input type="text" id="filter_long" placeholder="Longitude" style="width: 30%; padding: 5px; text-align: left;" />
+                </div>
+            </div>
+        </div>
+
         <section class="Map_interface">
             <div class="searchfeatures">
                 <input type="image" src="Options.png" id="options" class="options" />
@@ -47,8 +70,8 @@
                 </div>
             </div>
 
-            <div class="map_container">
-                <div class="Filters_Pane" id="Filters_Pane">
+            <div class="map_container" id="filters_pc">
+                <div class="Filters_Pane" id="filters_pc2">
                     <div class="f_header">
                         Filter Options
 
