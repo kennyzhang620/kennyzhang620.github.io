@@ -29,7 +29,7 @@ var darkStyle = 'https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=
 var redirectGMapNav = 'https://www.google.com/maps/dir/';
 
 
-var map = L.map('map').setView(homeCoords, 13);
+var map = L.map('map').setView(homeCoords, 3);
 /*
 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
@@ -37,7 +37,7 @@ var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 */
 
-var tiles = L.tileLayer(defaultStyle, {}).addTo(map);
+var tiles = L.tileLayer(darkStyle, {}).addTo(map);
 map.attributionControl.addAttribution("<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors")
 
 
