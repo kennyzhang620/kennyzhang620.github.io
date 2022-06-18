@@ -30,6 +30,7 @@ var redirectGMapNav = 'https://www.google.com/maps/dir/';
 
 
 var map = L.map('map').setView(homeCoords, 3);
+
 /*
 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
@@ -248,6 +249,8 @@ sw_Location.addEventListener('click', function (sw_click) {
     }
 
 });
+
+console.log(window.innerHeight);
 
 //navigate(redirectGMapNav, coordsToStr(homeCoords), 'Port Coquitlam')
 
