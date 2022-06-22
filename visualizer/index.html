@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -59,106 +59,114 @@
                 <input type="text" id="search" class="search" placeholder="Enter a location to go to..." />
             </div>
 
-            <div class="map_container">
-                <div class="map" id="map"></div>
+            <section class="map_container">
 
+                <div class="map" id="map">
+                    <input type="image" src="Settings.png" id="settingsbtn">
+                        <section id="options_meta" style="width:100%; border:2px dotted grey; display:block; z-index:1000;">
+                            
+                            <div class="map_container">
+                                <div class="Settings_Pane" id="settingspane">
+                                    <div class="Style-Options" style="text-align:center;padding:2px;">
+                                        <input type="image" src="default_style_1x1.png" class="image_button" id="style1" />
+                                        <input type="image" src="light_style_1x1.png" class="image_button" id="style2" />
+                                        <input type="image" src="dark_style_1x1.png" class="image_button" id="style3" />
+                                    </div>
+                                    <div class="Default_Origin" style="font-family:Calibri; font-weight:600;padding:2px;">
+                                        <div class="text_header">
+                                            Use Current Location for Origin?
+                                            <p style="font-size:small;"> NOTE: This will also set the default starting point for GMap Navigation.</p>
+                                            
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="sw_location">
+                                                <span class="slider round"></span>
+                                                </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="map_container" id="filters_pc">
+                                <div class="Filters_Pane">
+                                    <div class="f_header">
+                                        Filter Options
+                                        
+                                        <input type="text" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
+                                        <input type="text" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
+                                        <div class="pi_section">
+                                            <input type="text" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
+                                            <input type="text" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
+                                        </div>
+                                        <input type="text" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
+                                        <div class="fund_section">
+                                            <input type="text" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
+                                            <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
+                                        </div>
+                                        <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
+                                        <div class="fund_section">
+                                            <input type="text" id="filter_lat" placeholder="Latitude" style="width: 30%; padding: 5px; text-align: left;" />
+                                            <input type="text" id="filter_long" placeholder="Longitude" style="width: 30%; padding: 5px; text-align: left;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="map_container" id="items_main">
+                                <div class="Filters_Pane" id="items_main2">
+                                    <div class="f_header">
+                                        <div class="main_header" style="text-align:center;">
+                                            <name>Research Facility</name>
+                                        </div>
+                                        
+                                        <section class="data_header">
+                                            
+                                            <header id="rname" style="font-size:large; text-align:center;">Storied lives: An impact study of COVID-19 on seniors and their community support services</header>
+                                            <div id="pi_section" style="text-align:center;">
+                                                <div id="PI_field" style="padding:3px;">
+                                                    <div class="research_details">Alf Coles (University of Bristol) and Kate Le Roux (University of Cape Town, SA)</div>
+                                                </div>
+                                                <div id="Co_PI_field" style="padding:3px;">
+                                                    <div class="research_details">Nathalie Sinclair, Elizabeth de Freitas, Armando Solares, Oi-Lam Ng, Sally Wai-yan Wan, Tracy Hellwell, Julian Brown, Mark Boylan, Elaine Simmt, Stephanie La France</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div id="collab_field" style="padding:3px;">
+                                                <div class="research_details">Sandy Banks (SFU)</div>
+                                            </div>
+                                            
+                                            <div id="fund_section" style="text-align:center;">
+                                                <div id="funder_main" style="padding:2px; display:inline-block; width:43%;">
+                                                    <div class="research_details">Funder</div>
+                                                </div>
+                                                <div id="funder_period" style="padding: 2px;display:inline-block; width: 43%;">
+                                                    <div class="research_details">Period</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div id="poi_keywords" style="padding: 3px; display: block;">
+                                                <div class="research_details">Keywords</div>
+                                            </div>
+                                            
+                                            <div id="coordinates" style="text-align:center;">
+                                                <div id="funder_main" style="padding:2px; width:27%; display:inline-block;">
+                                                    <div class="research_details">Latitude</div>
+                                                </div>
+                                                <div id="funder_period" style="padding: 2px; width: 27%; display: inline-block;">
+                                                    <div class="research_details">Longitude</div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </section>
+                </div>
                 <input type="image" src="HomeIcon.png" id="homebtn">
-                <input type="image" src="Settings.png" id="settingsbtn">
-            </div>
-
-            <div class="map_container">
-                <div class="Settings_Pane" id="settingspane">
-                    <div class="Style-Options" style="text-align:center;padding:2px;">
-                        <input type="image" src="default_style_1x1.png" class="image_button" id="style1" />
-                        <input type="image" src="light_style_1x1.png" class="image_button" id="style2" />
-                        <input type="image" src="dark_style_1x1.png" class="image_button" id="style3" />
-                    </div>
-                    <div class="Default_Origin" style="font-family:Calibri; font-weight:600;padding:2px;">
-                        <div class="text_header">
-                            Use Current Location for Origin?
-                            <p style="font-size:small;"> NOTE: This will also set the default starting point for GMap Navigation.</p>
-
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox" id="sw_location">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map_container" id="filters_pc">
-                <div class="Filters_Pane" id="filters_pc2">
-                    <div class="f_header">
-                        Filter Options
-
-                        <input type="text" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
-                        <input type="text" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
-                        <div class="pi_section">
-                            <input type="text" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
-                            <input type="text" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
-                        </div>
-                        <input type="text" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
-                        <div class="fund_section">
-                            <input type="text" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
-                            <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
-                        </div>
-                        <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
-                        <div class="fund_section">
-                            <input type="text" id="filter_lat" placeholder="Latitude" style="width: 30%; padding: 5px; text-align: left;" />
-                            <input type="text" id="filter_long" placeholder="Longitude" style="width: 30%; padding: 5px; text-align: left;" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map_container" id="items_main">
-                <div class="Filters_Pane" id="items_main2">
-                    <div class="f_header">
-                        <div class="main_header" style="text-align:center;">
-                            <name>Research Facility</name>
-                        </div>
+            </section>
 
 
-                        <header id="rname" style="font-size:large; text-align:center;">Storied lives: An impact study of COVID-19 on seniors and their community support services</header>
-                        <div class="pi_section">
-                            <div id="PI_field" style="padding:3px;">
-                                <div class="research_details">Alf Coles (University of Bristol) and Kate Le Roux (University of Cape Town, SA)</div>
-                            </div>
-                            <div id="Co_PI_field" style="padding:3px;">
-                                <div class="research_details">Nathalie Sinclair, Elizabeth de Freitas, Armando Solares, Oi-Lam Ng, Sally Wai-yan Wan, Tracy Hellwell, Julian Brown, Mark Boylan, Elaine Simmt, Stephanie La France</div>
-                            </div>
-                        </div>
-
-                        <div id="collab_field" style="padding:3px;">
-                            <div class="research_details">Sandy Banks (SFU)</div>
-                        </div>
-
-                        <div id="fund_section">
-                            <div id="funder_main" style="padding:3px; width:70%; display:inline-block;">
-                                <div class="research_details">Funder</div>
-                            </div>
-                            <div id="funder_period" style="padding: 3px; width: 27.5%; display: inline-block;">
-                                <div class="research_details">Period</div>
-                            </div>
-                        </div>
-
-                        <div id="poi_keywords" style="padding: 3px; width: 100%; display: inline-block;">
-                            <div class="research_details">Keywords</div>
-                        </div>
-
-                        <div id="coordinates" style="text-align:center;">
-                            <div id="funder_main" style="padding:3px; width:27%; display:inline-block;">
-                                <div class="research_details">Latitude</div>
-                            </div>
-                            <div id="funder_period" style="padding: 3px; width: 27%; display: inline-block;">
-                                <div class="research_details">Longitude</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            
 
         </section>
 
