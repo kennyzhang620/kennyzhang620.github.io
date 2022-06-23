@@ -20,7 +20,8 @@ var defStyleBtn = document.getElementById('style1');
 var lightStyleBtn = document.getElementById('style2');
 var darkStyleBtn = document.getElementById('style3');
 var sw_Location = document.getElementById('sw_location');
-var metadataWin = document.getElementsByClassName('data_header')
+var metadataWin = document.getElementsByClassName('data_header');
+var metadataWinID = document.getElementById("data_header");
 
 var FiltersActive = false;
 
@@ -33,22 +34,21 @@ var redirectGMapNav = 'https://www.google.com/maps/dir/';
 var map = L.map('map').setView(homeCoords, 3);
 var mapSize = document.getElementById("map");
 
-adjustWin();
 
 function adjustWin() {
 	var heightVal = `${window.innerHeight * 0.85}px`;
+	var heightVal2 = `${window.innerHeight * 0.75}px`;
 	mapSize.style.height = heightVal;
 
 	var aspect = window.innerWidth / window.innerHeight;
 
 	var widthX = -50 * Math.pow(13, -(aspect + 0.05)) + 96;
 	searchbar.style.width = `${widthX}%`;//150 66 // 378 87 // 538 91 // 1200 96
+	metadataWinID.style.height = heightVal;
 	console.log(heightVal);
-}
 
-window.onresize = function (r) {
-	adjustWin();
-};
+	map.invalidateSize()
+}
 
 /*
 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -139,7 +139,6 @@ function loadLeftPanel(i) {
 	var coordsLong = parsedD[i].longitude;
 
 	var htmlValues = `<header id="rname" style="font-size:large; text-align:center; font-weight:800;">${Project}</header>
-<section id="data_full" style="font-size: 12px">
 		<div id = "pi_section">
 												PI(s)
                                                 <div id="PI_field" style="padding:3px;">
@@ -182,8 +181,7 @@ function loadLeftPanel(i) {
                                                 <div id="funder_period" style="padding: 2px; width: 40%; display: inline-block;">
                                                     <div class="research_details" style="height: 20px;">${coordsLong}</div>
                                                 </div>
-                                            </div>
-</section>`
+                                            </div>`
 
 	var inner = metadataWin;
 
@@ -278,7 +276,11 @@ function changeTileType(tileURL) {
 function closeRightPane() {
 	settingsPne.style.display = "none";
 	settingsBtn.style.display = "block";
-	infoPanel.style.display = "none";
+
+	if (infoPanel.style.display != 'none') {
+		infoPanel.style.display = "none";
+		map.invalidateSize()
+	}
 }
 
 //console.log(parsedD[0].latitude, parsedD[1].longitude);
@@ -401,6 +403,14 @@ sw_Location.addEventListener('click', function (sw_click) {
     }
 
 });
+
+
+adjustWin();
+
+window.onresize = function (r) {
+	adjustWin();
+};
+
 
 //navigate(redirectGMapNav, coordsToStr(homeCoords), 'Port Coquitlam')
 

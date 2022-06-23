@@ -56,6 +56,7 @@ body
     float: left;
     z-index:10000;
     border: 2px solid grey;
+    border-radius:6px;
 }
 
 .research_details {
