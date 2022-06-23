@@ -279,8 +279,9 @@ function closeRightPane() {
 
 	if (infoPanel.style.display != 'none') {
 		infoPanel.style.display = "none";
-		map.invalidateSize()
+		
 	}
+	map.invalidateSize()
 }
 
 //console.log(parsedD[0].latitude, parsedD[1].longitude);
