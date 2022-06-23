@@ -36,7 +36,7 @@ var mapSize = document.getElementById("map");
 adjustWin();
 
 function adjustWin() {
-	var heightVal = `${window.innerHeight * 0.75}px`;
+	var heightVal = `${window.innerHeight * 0.85}px`;
 	mapSize.style.height = heightVal;
 
 	var aspect = window.innerWidth / window.innerHeight;
@@ -123,84 +123,23 @@ function GeoCode(query) {
 	return coords;
 }
 
-function loadLeftPanel(Project, PIs, CoPIs, Collabs, Funder, Period, Keywords, Lat, Long) {
-	console.log("Data->", Project, PIs, CoPIs, Collabs);
+function loadLeftPanel(i) {
+	console.log("Data->", Project, PIs, CoPIs, Collabs, Funder, TimePeriod, keywords, site, coordsLat, coordsLong);
 
 
-	var htmlValues = `<header id="rname" style="font-size:large; text-align:center;">${Project}</header>
-		<div id = "pi_section" style = "text-align:center;">
-                                                <div id="PI_field" style="padding:3px;">
-                                                    <div class="research_details">${PIs}</div>
-                                                </div>
-                                                <div id="Co_PI_field" style="padding:3px;">
-                                                    <div class="research_details">${CoPIs}</div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="collab_field" style="padding:3px;">
-                                                <div class="research_details">${Collabs}</div>
-                                            </div>
-                                            
-                                            <div id="fund_section" style="text-align:center;">
-                                                <div id="funder_main" style="padding:2px; display:inline-block; width:43%;">
-                                                    <div class="research_details">Funder</div>
-                                                </div>
-                                                <div id="funder_period" style="padding: 2px;display:inline-block; width: 43%;">
-                                                    <div class="research_details">Period</div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="poi_keywords" style="padding: 3px; display: block;">
-                                                <div class="research_details">Keywords</div>
-                                            </div>
-                                            
-                                            <div id="coordinates" style="text-align:center;">
-                                                <div id="funder_main" style="padding:2px; width:27%; display:inline-block;">
-                                                    <div class="research_details">Latitude</div>
-                                                </div>
-                                                <div id="funder_period" style="padding: 2px; width: 27%; display: inline-block;">
-                                                    <div class="research_details">Longitude</div>
-                                                </div>
-                                            </div>`
+	var Project = parsedD[i].Project;
+	var PIs = parsedD[i]["PI "];
+	var CoPIs = parsedD[i]["Co-PI(s)"];
+	var Collabs = parsedD[i]["Collaborators\n(not funders)"];
+	var Funder = parsedD[i].Funder;
+	var TimePeriod = parsedD[i]["Funding period"];
+	var keywords = parsedD[i]["Research keywords"];
+	var site = parsedD[i]["Research Sites"];
+	var coordsLat = parsedD[i].latitude;
+	var coordsLong = parsedD[i].longitude;
 
-	var inner = metadataWin;
-
-	if (inner != null) {
-		var container = inner[0];
-
-		while (container.firstChild) {
-			container.removeChild(container.firstChild);
-		}
-
-		var newNode = document.createRange().createContextualFragment(htmlValues);
-		container.appendChild(newNode);
-
-		//infoPanel.style.display = "block";
-
-	}
-}
-
-function filter() {
-	for (var i = 0; i < parsedD.length; i++) {
-		markers.push(L.circle([parsedD[i].latitude, parsedD[i].longitude], {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.25,
-			radius: 50
-		}).addTo(map));
-
-		var Project = parsedD[i].Project;
-		var PIs = parsedD[i]["PI "];
-		var CoPIs = parsedD[i]["Co-PI(s)"];
-		var Collabs = parsedD[i]["Collaborators\n(not funders)"];
-		var Funder = parsedD[i].Funder;
-		var TimePeriod = parsedD[i]["Funding period"];
-		var keywords = parsedD[i]["Research keywords"];
-		var site = parsedD[i]["Research Sites"];
-		var coordsLat = parsedD[i].latitude;
-		var coordsLong = parsedD[i].longitude;
-
-		var metadata = `<header id="rname" style="font-size:large; text-align:center; font-weight:800;">${Project}</header>
+	var htmlValues = `<header id="rname" style="font-size:large; text-align:center; font-weight:800;">${Project}</header>
+<section id="data_full" style="font-size: 12px">
 		<div id = "pi_section">
 												PI(s)
                                                 <div id="PI_field" style="padding:3px;">
@@ -243,11 +182,89 @@ function filter() {
                                                 <div id="funder_period" style="padding: 2px; width: 40%; display: inline-block;">
                                                     <div class="research_details" style="height: 20px;">${coordsLong}</div>
                                                 </div>
-                                            </div>`;
+                                            </div>
+</section>`
+
+	var inner = metadataWin;
+
+	if (inner != null) {
+		var container = inner[0];
+
+		while (container.firstChild) {
+			container.removeChild(container.firstChild);
+		}
+
+		var newNode = document.createRange().createContextualFragment(htmlValues);
+		container.appendChild(newNode);
+	}
+
+	displayInfo();
+}
+
+function displayInfo() {
+	infoPanel.style.display = "block";
+}
+function filter() {
+	for (var i = 0; i < parsedD.length; i++) {
+		markers.push(L.circle([parsedD[i].latitude, parsedD[i].longitude], {
+			color: 'red',
+			fillColor: '#f03',
+			fillOpacity: 0.25,
+			radius: 50
+		}).addTo(map));
+
+		var Project = parsedD[i].Project;
+		var PIs = parsedD[i]["PI "];
+		var CoPIs = parsedD[i]["Co-PI(s)"];
+		var Collabs = parsedD[i]["Collaborators\n(not funders)"];
+		var Funder = parsedD[i].Funder;
+		var TimePeriod = parsedD[i]["Funding period"];
+		var keywords = parsedD[i]["Research keywords"];
+		var site = parsedD[i]["Research Sites"];
+		var coordsLat = parsedD[i].latitude;
+		var coordsLong = parsedD[i].longitude;
+
+		var metadata = `
+
+<header id="rname" style="font-size:large; text-align:center; font-weight:800;">${Project}</header>
+<section id="Full_section">
+											FUNDER AND TIME PERIOD
+                                            <div id="fund_section" style="text-align:center;">
+                                                <div id="funder_main" style="padding:2px; display:inline-block; width:43%;">
+                                                    <div class="research_details" style="height:20px;">${Funder}</div>
+                                                </div>
+                                                <div id="funder_period" style="padding: 2px;display:inline-block; width: 43%;">
+                                                    <div class="research_details" style="height:20px;">${TimePeriod}</div>
+                                                </div>
+                                            </div>
+											RESEARCH SITES
+                                            <div id="poi_site" style="padding: 3px; display: block;">
+                                                <div class="research_details" style="height: 20px;">${site}</div>
+                                            </div>
+                                            COORDINATES
+                                            <div id="coordinates" style="text-align:center;">
+                                                <div id="funder_main" style="padding:2px; width:40%;display:inline-block;">
+                                                    <div class="research_details" style="height: 20px;">${coordsLat}</div>
+                                                </div>
+                                                <div id="funder_period" style="padding: 2px; width: 40%; display: inline-block;">
+                                                    <div class="research_details" style="height: 20px;">${coordsLong}</div>
+                                                </div>
+                                            </div>
+											<div id="options" style="text-align:left;">
+												<div id="more_options" style="padding:2px; width:40%;display:inline-block;">
+													<div class="research_details" style="height:20px" onclick="loadLeftPanel(${i})">More information</div>
+												</div>
+												<div id="navigate" style="padding:2px; width:55%;display:inline-block;">
+													<div class="research_details" style="height:20px" onclick="navigate(redirectGMapNav, coordsToStr(homeCoords), coordsToStr( [${parseFloat(parsedD[i].latitude)}, ${parseFloat(parsedD[i].longitude)}] ))">Navigate to Site</div>
+												</div>
+											</div>
+</section>
+
+
+`;
 
 		console.log("===>", Project, PIs, CoPIs, Collabs);
 		markers[i].bindPopup(metadata);
-
     }
 }
 
@@ -363,7 +380,7 @@ function navigate(webNav, src, dest) {
 
 function failure() {
 	alert("Failed to obtain your location. Check your permissions and try again.")
-	sw_Location.clicked = false;
+	sw_Location.checked = false;
 }
 
 console.log(window.innerHeight*0.75);
@@ -379,7 +396,7 @@ sw_Location.addEventListener('click', function (sw_click) {
 		}
 		else {
 			alert("Failed to obtain your location. Check your permissions and try again.");
-			sw_Location.clicked = false;
+			sw_Location.checked = false;
         }
     }
 
