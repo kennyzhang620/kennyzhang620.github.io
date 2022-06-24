@@ -31,20 +31,22 @@ var darkStyle = 'https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=
 
 var redirectGMapNav = 'https://www.google.com/maps/dir/';
 
-var map = L.map('map').setView(homeCoords, 3);
+var map = L.map('map').setView(homeCoords, 1);
 var mapSize = document.getElementById("map");
 
 
 function adjustWin() {
-	var heightVal = `${window.innerHeight * 0.85}px`;
-	var heightVal2 = `${window.innerHeight * 0.75}px`;
+
+	var heightValN = 0.7;
+	var heightVal = `${window.innerHeight * (heightValN)}px`;
+	var heightVal2 = `${window.innerHeight * (heightValN - 0.08)}px`;
 	mapSize.style.height = heightVal;
 
 	var aspect = window.innerWidth / window.innerHeight;
 
 	var widthX = -50 * Math.pow(13, -(aspect + 0.05)) + 96;
 	searchbar.style.width = `${widthX}%`;//150 66 // 378 87 // 538 91 // 1200 96
-	metadataWinID.style.height = heightVal;
+	metadataWinID.style.height = heightVal2;
 	console.log(heightVal);
 
 	map.invalidateSize()
@@ -250,10 +252,10 @@ function filter() {
                                             </div>
 											<div id="options" style="text-align:left;">
 												<div id="more_options" style="padding:2px; width:40%;display:inline-block;">
-													<div class="research_details" style="height:20px" onclick="loadLeftPanel(${i})">More information</div>
+													<div class="rounded_button" onclick="loadLeftPanel(${i})">More</div>
 												</div>
 												<div id="navigate" style="padding:2px; width:55%;display:inline-block;">
-													<div class="research_details" style="height:20px" onclick="navigate(redirectGMapNav, coordsToStr(homeCoords), coordsToStr( [${parseFloat(parsedD[i].latitude)}, ${parseFloat(parsedD[i].longitude)}] ))">Navigate to Site</div>
+													<div class="rounded_button" onclick="navigate(redirectGMapNav, coordsToStr(homeCoords), coordsToStr( [${parseFloat(parsedD[i].latitude)}, ${parseFloat(parsedD[i].longitude)}] ))">Navigate to Site</div>
 												</div>
 											</div>
 </section>
@@ -299,6 +301,15 @@ homebutton.addEventListener('mousedown', function (clicked) {
 });
 
 homebutton.addEventListener('click', function (clicked) {
+	if (sw_Location.checked) {
+
+		navigator.geolocation.getCurrentPosition(function (data) {
+			homeCoords = [data.coords.latitude, data.coords.longitude];
+
+		}, failure);
+
+	}
+
 	map.setView(homeCoords, 15);
 });
 
@@ -317,6 +328,7 @@ settingsBtn.addEventListener('mouseup', function (clicked) {
 settingsBtn.addEventListener('click', function (clicked) {
 	settingsPne.style.display = "block";
 	settingsBtn.style.display = "none";
+	infoPanel.style.display = "none";
 });
 
 map.on('movestart', closeRightPane)
@@ -355,7 +367,8 @@ filtersBtn.addEventListener('click', function (clicked) {
 		filtersPne.style.display = "none";
 
 		FiltersActive = false;
-    }
+	}
+	adjustWin();
 });
 
 defStyleBtn.addEventListener('click', function (clicked) {
@@ -382,7 +395,8 @@ function navigate(webNav, src, dest) {
 }
 
 function failure() {
-	alert("Failed to obtain your location. Check your permissions and try again.")
+	alert("Failed to obtain your location. Check your permissions and try again.");
+	homebutton.src = "HomeIcon.png";
 	sw_Location.checked = false;
 }
 
@@ -395,22 +409,23 @@ sw_Location.addEventListener('click', function (sw_click) {
 			navigator.geolocation.getCurrentPosition(function (data) {
 				homeCoords = [data.coords.latitude, data.coords.longitude];
 
+				homebutton.src = "Locate.png";
 			}, failure);
 		}
 		else {
 			alert("Failed to obtain your location. Check your permissions and try again.");
+			homebutton.src = "HomeIcon.png";
 			sw_Location.checked = false;
-        }
+		}
+	}
+	else {
+		homebutton.src = "HomeIcon.png";
     }
 
 });
 
 
 adjustWin();
-
-window.onresize = function (r) {
-	adjustWin();
-};
 
 
 //navigate(redirectGMapNav, coordsToStr(homeCoords), 'Port Coquitlam')
