@@ -37,7 +37,7 @@ var mapSize = document.getElementById("map");
 
 function adjustWin() {
 
-	var heightValN = 0.7;
+	var heightValN = 0.85;
 	var heightVal = `${window.innerHeight * (heightValN)}px`;
 	var heightVal2 = `${window.innerHeight * (heightValN - 0.08)}px`;
 	mapSize.style.height = heightVal;
