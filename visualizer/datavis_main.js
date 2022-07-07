@@ -38,16 +38,10 @@ var mapSize = document.getElementById("map");
 function adjustWin() {
 
 	var heightValN = 0.85;
-	var heightVal = `${window.innerHeight * (heightValN)}px`;
-	var heightVal2 = `${window.innerHeight * (heightValN - 0.08)}px`;
-	mapSize.style.height = heightVal;
-
 	var aspect = window.innerWidth / window.innerHeight;
 
 	var widthX = -50 * Math.pow(13, -(aspect + 0.05)) + 96;
 	searchbar.style.width = `${widthX}%`;//150 66 // 378 87 // 538 91 // 1200 96
-	metadataWinID.style.height = heightVal2;
-	console.log(heightVal);
 
 	map.invalidateSize()
 }
@@ -429,6 +423,10 @@ adjustWin();
 
 
 //navigate(redirectGMapNav, coordsToStr(homeCoords), 'Port Coquitlam')
+
+window.addEventListener('resize', function (event) {
+	adjustWin();
+}, true);
 
 
 
