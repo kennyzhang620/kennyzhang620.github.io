@@ -311,8 +311,10 @@ search.addEventListener('keypress', function (keyin) {
 	if (keyin.key === 'Enter') {
 		var coords = GeoCode(search.value);
 
-		if (coords != null && coords.length > 0)
+		if (coords != null && coords.length > 0) {
+			map.setZoom(17);
 			map.setView(coords, 15);
+		}
 	}
 });
 
