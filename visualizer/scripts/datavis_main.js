@@ -260,15 +260,6 @@ function filter() {
                                             <div id="poi_site" style="padding: 3px; display: block;">
                                                 <div class="research_details" style="height: 20px;">${site}</div>
                                             </div>
-                                            COORDINATES
-                                            <div id="coordinates" style="text-align:center;">
-                                                <div id="funder_main" style="padding:2px; width:40%;display:inline-block;">
-                                                    <div class="research_details" style="height: 20px;">${coordsLat}</div>
-                                                </div>
-                                                <div id="funder_period" style="padding: 2px; width: 40%; display: inline-block;">
-                                                    <div class="research_details" style="height: 20px;">${coordsLong}</div>
-                                                </div>
-                                            </div>
 											<div id="options" style="text-align:left;">
 												<div id="more_options" style="padding:2px; width:40%;display:inline-block;">
 													<div class="rounded_button" onclick="loadLeftPanel(${i})">More</div>
