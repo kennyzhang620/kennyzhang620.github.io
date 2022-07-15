@@ -37,7 +37,7 @@ var maxZoomV = 18;
 var map = L.map('map', {
 	minZoom: minZoomV,
 	maxZoom: maxZoomV,
-	zoomSnap: 1
+	zoomSnap: 2
 }).setView(homeCoords, 3);
 var mapSize = document.getElementById("map");
 
