@@ -280,7 +280,7 @@ function filter() {
 
 			if (map['_zoom'] <= 11) {
 				console.log(e);
-				map.setView(e.latlng, 17);
+				map.setView(e.latlng, 18);
 				map.setZoom(16);
 			}
 		});
