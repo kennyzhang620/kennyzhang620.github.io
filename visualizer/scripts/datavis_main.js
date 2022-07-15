@@ -37,7 +37,7 @@ var maxZoomV = 18;
 var map = L.map('map', {
 	minZoom: minZoomV,
 	maxZoom: maxZoomV,
-	zoomSnap: 2
+	zoomSnap: 1.5
 }).setView(homeCoords, 3);
 var mapSize = document.getElementById("map");
 
@@ -48,7 +48,7 @@ function adjustWin() {
 
 	console.log(map);
 	if (zoomLevel <= 8) {
-		map.options.zoomSnap = 2;
+		map.options.zoomSnap = 1.5;
 	}
 	else {
 		map.options.zoomSnap = 1;
