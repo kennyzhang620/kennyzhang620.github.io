@@ -6,28 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet"
-          href="styles.css" />
+          href="stylesheets/styles.css" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
           integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
           crossorigin="" />
 
-    <link rel="stylesheet" href="additional_styles.css" />
+    <link rel="stylesheet" href="stylesheets/additional_styles.css" />
 
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
             crossorigin=""></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
-    <script src="jquery.csv.js"></script>
+    <script src="scripts/jquery.csv.js"></script>
 
     <title>Data and Research Visualization Map</title>
 
 </head>
 <body>
-    <nav><image id ="logo" src="Logo.png"></image>Data and Research Visualization Map
-    </nav>
-
     <section class="main_view">
 
         <div class="Filters_Pane" id="filters_norm">
@@ -46,16 +43,11 @@
                     <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
                 </div>
                 <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
-                <div class="fund_section">
-                    <input type="text" id="filter_lat" placeholder="Latitude" style="width: 30%; padding: 5px; text-align: left;" />
-                    <input type="text" id="filter_long" placeholder="Longitude" style="width: 30%; padding: 5px; text-align: left;" />
-                </div>
             </div>
         </div>
 
         <section class="Map_interface">
             <div class="searchfeatures">
-                <input type="image" src="Options.png" id="options" class="options" />
                 <input type="text" id="search" class="search" placeholder="Enter a location to go to..." />
             </div>
 
@@ -96,30 +88,21 @@
                                 <div id="poi_keywords" style="padding: 3px; display: block;">
                                     <div class="research_details">Keywords</div>
                                 </div>
-
-                                <div id="coordinates" style="text-align:center;">
-                                    <div id="funder_main" style="padding:2px; width:27%; display:inline-block;">
-                                        <div class="research_details">Latitude</div>
-                                    </div>
-                                    <div id="funder_period" style="padding: 2px; width: 27%; display: inline-block;">
-                                        <div class="research_details">Longitude</div>
-                                    </div>
-                                </div>
                             </section>
                         </div>
                     </div>
                 </div>
 
                 <div class="map" id="map">
-                    <input type="image" src="Settings.png" id="settingsbtn">
+                    <input type="image" src="icons/Settings.png" id="settingsbtn">
                     <section id="options_meta" style="width:100%; border:2px dotted grey; display:block; z-index:1000;">
 
                         <div class="map_container">
                             <div class="Settings_Pane" id="settingspane">
                                 <div class="Style-Options" style="text-align:center;padding:2px;">
-                                    <input type="image" src="default_style_1x1.png" class="image_button" id="style1" />
-                                    <input type="image" src="light_style_1x1.png" class="image_button" id="style2" />
-                                    <input type="image" src="dark_style_1x1.png" class="image_button" id="style3" />
+                                    <input type="image" src="icons/default_style_1x1.png" class="image_button" id="style1" />
+                                    <input type="image" src="icons.light_style_1x1.png" class="image_button" id="style2" />
+                                    <input type="image" src="icons/dark_style_1x1.png" class="image_button" id="style3" />
                                 </div>
                                 <div class="Default_Origin" style="font-family:Calibri; font-weight:600;padding:2px;">
                                     <div class="text_header">
@@ -152,17 +135,13 @@
                                         <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
                                     </div>
                                     <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
-                                    <div class="fund_section">
-                                        <input type="text" id="filter_lat" placeholder="Latitude" style="width: 30%; padding: 5px; text-align: left;" />
-                                        <input type="text" id="filter_long" placeholder="Longitude" style="width: 30%; padding: 5px; text-align: left;" />
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
                     </section>
                 </div>
-                <input type="image" src="HomeIcon.png" id="homebtn">
+                <input type="image" src="icons/HomeIcon.png" id="homebtn">
             </section>
 
 
@@ -174,7 +153,7 @@
 
 
 
-    <script src="datavis_main.js"></script>
+    <script src="scripts/datavis_main.js"></script>
 </body>
 
 </html>

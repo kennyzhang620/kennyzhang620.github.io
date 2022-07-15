@@ -11,7 +11,7 @@ var searchbar = document.getElementById("search");
 var homebutton = document.getElementById("homebtn");
 var settingsBtn = document.getElementById("settingsbtn")
 var settingsPne = document.getElementById("settingspane");
-var filtersBtn = document.getElementById("options");
+var filtersBtn = settingsBtn;
 var filtersPne = document.getElementById("filters_norm");
 var filtersPC = document.getElementById("filters_pc");
 var infoPanel = document.getElementById("items_main");
@@ -31,19 +31,53 @@ var darkStyle = 'https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=
 
 var redirectGMapNav = 'https://www.google.com/maps/dir/';
 
-var map = L.map('map').setView(homeCoords, 1);
+var minZoomV = 3;
+var maxZoomV = 18;
+
+var map = L.map('map', {
+	minZoom: minZoomV,
+	maxZoom: maxZoomV,
+	zoomSnap: 1
+}).setView(homeCoords, 3);
 var mapSize = document.getElementById("map");
 
 
 function adjustWin() {
 
-	var heightValN = 0.85;
-	var aspect = window.innerWidth / window.innerHeight;
+	const zoomLevel = map['_zoom'];
 
-	var widthX = -50 * Math.pow(13, -(aspect + 0.05)) + 96;
-	searchbar.style.width = `${widthX}%`;//150 66 // 378 87 // 538 91 // 1200 96
+	console.log(map);
+	if (zoomLevel <= 8) {
+		map.options.zoomSnap = 2;
+	}
+	else {
+		map.options.zoomSnap = 1;
+    }
 
-	map.invalidateSize()
+	console.log("ZOOM: ", zoomLevel);
+
+	var maxV = (18500 / (maxZoomV / minZoomV)) - 50
+	for (var a = 0; a < markers.length; a++) {
+
+		if (zoomLevel <= 5) {
+			maxV = (18500 / (maxZoomV / minZoomV)) - 50;
+			markers[a]['_mRadius'] = (18500 / (zoomLevel / minZoomV)) - maxV;
+		}
+		else if (zoomLevel <= 10) {
+			maxV = (7500 / (maxZoomV / minZoomV)) - 50;
+			markers[a]['_mRadius'] = (7500 / (zoomLevel / minZoomV)) - maxV;
+		}
+		else if (zoomLevel <= 12) {
+			maxV = (1500 / (maxZoomV / minZoomV)) - 50;
+			markers[a]['_mRadius'] = (1500 / (zoomLevel / minZoomV)) - maxV;
+		}
+		else
+			markers[a]['_mRadius'] = 50;
+
+		console.log(markers[a]['_mRadius']);
+	}
+	
+	map.invalidateSize(true);
 }
 
 /*
@@ -53,7 +87,7 @@ var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 */
 
-var tiles = L.tileLayer(darkStyle, {}).addTo(map);
+var tiles = L.tileLayer(lightStyle, {}).addTo(map);
 map.attributionControl.addAttribution("<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors")
 
 txtFile.open("GET", "https://kennyzhang620.github.io/vis_data.csv", false);
@@ -168,16 +202,7 @@ function loadLeftPanel(i) {
                                             <div id="poi_site" style="padding: 3px; display: block;">
                                                 <div class="research_details" style="height: 20px;">${site}</div>
                                             </div>
-
-                                            COORDINATES
-                                            <div id="coordinates" style="text-align:center;">
-                                                <div id="funder_main" style="padding:2px; width:40%;display:inline-block;">
-                                                    <div class="research_details" style="height: 20px;">${coordsLat}</div>
-                                                </div>
-                                                <div id="funder_period" style="padding: 2px; width: 40%; display: inline-block;">
-                                                    <div class="research_details" style="height: 20px;">${coordsLong}</div>
-                                                </div>
-                                            </div>`
+													`
 
 	var inner = metadataWin;
 
@@ -258,7 +283,17 @@ function filter() {
 `;
 
 		console.log("===>", Project, PIs, CoPIs, Collabs);
+		console.log(markers[i]);
 		markers[i].bindPopup(metadata);
+		markers[i].on('click', function (e) {
+
+			if (map['_zoom'] <= 11) {
+				console.log(e);
+				map.setView(e.latlng, 17);
+				map.setZoom(16);
+			}
+		});
+
     }
 }
 
@@ -277,7 +312,7 @@ function closeRightPane() {
 		infoPanel.style.display = "none";
 		
 	}
-	map.invalidateSize()
+	adjustWin();
 }
 
 //console.log(parsedD[0].latitude, parsedD[1].longitude);
@@ -304,7 +339,9 @@ homebutton.addEventListener('click', function (clicked) {
 
 	}
 
-	map.setView(homeCoords, 15);
+	map.setView(homeCoords, 1);
+	map.setZoom(3);
+	adjustWin();
 });
 
 homebutton.addEventListener('mouseup', function (clicked) {
@@ -319,11 +356,6 @@ settingsBtn.addEventListener('mouseup', function (clicked) {
 	settingsBtn.style.transform = "scale(1,1)";
 });
 
-settingsBtn.addEventListener('click', function (clicked) {
-	settingsPne.style.display = "block";
-	settingsBtn.style.display = "none";
-	infoPanel.style.display = "none";
-});
 
 map.on('movestart', closeRightPane)
 
@@ -418,9 +450,7 @@ sw_Location.addEventListener('click', function (sw_click) {
 
 });
 
-
 adjustWin();
-
 
 //navigate(redirectGMapNav, coordsToStr(homeCoords), 'Port Coquitlam')
 
