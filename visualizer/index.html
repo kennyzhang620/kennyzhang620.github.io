@@ -31,18 +31,18 @@
             <div class="f_header">
                 Filter Options
 
-                <input type="text" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
-                <input type="text" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
+                <input type="text" class="filter_input" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
+                <input type="text" class="filter_input" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
                 <div class="pi_section">
-                    <input type="text" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
-                    <input type="text" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
+                    <input type="text" class="filter_input" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
+                    <input type="text" class="filter_input" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
                 </div>
-                <input type="text" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
+                <input type="text" class="filter_input" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
                 <div class="fund_section">
-                    <input type="text" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
-                    <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
+                    <input type="text" class="filter_input" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
+                    <input type="text" class="filter_input" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
                 </div>
-                <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
+                <input type="text" class="filter_input" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
             </div>
         </div>
 
@@ -97,44 +97,23 @@
                     <input type="image" src="icons/Settings.png" id="settingsbtn">
                     <section id="options_meta" style="width:100%; border:2px dotted grey; display:block; z-index:1000;">
 
-                        <div class="map_container">
-                            <div class="Settings_Pane" id="settingspane">
-                                <div class="Style-Options" style="text-align:center;padding:2px;">
-                                    <input type="image" src="icons/default_style_1x1.png" class="image_button" id="style1" />
-                                    <input type="image" src="icons.light_style_1x1.png" class="image_button" id="style2" />
-                                    <input type="image" src="icons/dark_style_1x1.png" class="image_button" id="style3" />
-                                </div>
-                                <div class="Default_Origin" style="font-family:Calibri; font-weight:600;padding:2px;">
-                                    <div class="text_header">
-                                        Use Current Location for Origin?
-                                        <p style="font-size:small;"> NOTE: This will also set the default starting point for GMap Navigation.</p>
-
-                                    </div>
-                                    <label class="switch">
-                                        <input type="checkbox" id="sw_location">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="map_container" id="filters_pc">
                             <div class="Filters_Pane">
                                 <div class="f_header">
                                     Filter Options
 
-                                    <input type="text" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
-                                    <input type="text" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
+                                    <input type="text" class="filter_input" id="filter_search" placeholder="Project Name" style="width:93%;padding:5px;text-align:left;" />
+                                    <input type="text" class="filter_input" id="filter_site" placeholder="Research Sites" style="width: 93%; padding: 5px; text-align: left;" />
                                     <div class="pi_section">
-                                        <input type="text" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
-                                        <input type="text" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
+                                        <input type="text" class="filter_input" id="filter_pi_main" placeholder="PI" style="width: 50%; padding: 5px; text-align: left;" />
+                                        <input type="text" class="filter_input" id="filter_pi_sub" placeholder="Co-PIs" style="width: 38%; padding: 5px; text-align: left;" />
                                     </div>
-                                    <input type="text" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
+                                    <input type="text" class="filter_input" id="filter_colabs" placeholder="Collaborators" style="width: 93%; padding: 5px; text-align: left;" />
                                     <div class="fund_section">
-                                        <input type="text" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
-                                        <input type="text" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
+                                        <input type="text" class="filter_input" id="filter_fun_main" placeholder="Funder" style="width: 50%; padding: 5px; text-align: left;" />
+                                        <input type="text" class="filter_input" id="filter_fun_time" placeholder="Period" style="width: 38%; padding: 5px; text-align: left;" />
                                     </div>
-                                    <input type="text" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
+                                    <input type="text"  class="filter_input" id="filter_keywords" placeholder="Keywords" style="width: 93%; padding: 5px; text-align: left;" />
                                 </div>
                             </div>
                         </div>

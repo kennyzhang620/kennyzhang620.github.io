@@ -1,4 +1,4 @@
-// JavaScript source code
+	// JavaScript source code
 
 // Initialize the map.
 var homeCoords = [49.27767013573553, -122.91268085603525];
@@ -16,13 +16,10 @@ var filtersPne = document.getElementById("filters_norm");
 var filtersPC = document.getElementById("filters_pc");
 var infoPanel = document.getElementById("items_main");
 
-var defStyleBtn = document.getElementById('style1');
-var lightStyleBtn = document.getElementById('style2');
-var darkStyleBtn = document.getElementById('style3');
-var sw_Location = document.getElementById('sw_location');
 var metadataWin = document.getElementsByClassName('data_header');
 var metadataWinID = document.getElementById("data_header");
 
+var inputBars = document.getElementsByClassName("filter_input");
 var FiltersActive = false;
 
 var defaultStyle = 'https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=qYOU04zmJXYprHE89esvVcT3qGW68VsSgDdYXjXUUmZgDRBajbH3e58EHY5bONXU';
@@ -46,7 +43,6 @@ function adjustWin() {
 
 	const zoomLevel = map['_zoom'];
 
-	console.log(map);
 	if (zoomLevel <= 8) {
 		map.options.zoomSnap = 1.5;
 	}
@@ -109,6 +105,35 @@ txtFile.onerror = function (e) {
 txtFile.send();
 
 console.log(parsedD);
+
+console.log("IXXX: ", inputBars);
+for (var i = 0; i < inputBars.length; i++) {
+	console.log("aaa_>", i, inputBars[i].placeholder, "  ", inputBars[i].value);
+
+	inputBars[i].addEventListener('keypress', function (keyin) {
+
+		// Inefficient code ahead!
+
+		for (var i = 0; i < inputBars.length; i++) {
+
+			if (filtersPC.style.display != 'block') {
+				if (i + 8 < inputBars.length) {
+					inputBars[i + 8].value = inputBars[i].value;
+				}
+			}
+
+			else {
+				if (i - 8 >= 0) {
+					inputBars[i - 8].value = inputBars[i].value;
+				}
+			}
+		}
+
+
+		filter(inputBars[0].value, inputBars[1].value, inputBars[2].value, inputBars[3].value, inputBars[4].value, inputBars[5].value, inputBars[6].value, inputBars[7].value);
+
+	});
+}
 
 function GeoCode(query) {
 	var geocoderURL = "https://dev.virtualearth.net/REST/v1/Locations/" + query + "?" + "o=json&key=" + bingKey;
@@ -223,14 +248,17 @@ function loadLeftPanel(i) {
 function displayInfo() {
 	infoPanel.style.display = "block";
 }
-function filter() {
+function filter(projectName, researchNames, piNames, copiNames, collabNames, funderName, timePeriod, keywordList) {
+
+	console.log("checkerL -> ", projectName, researchNames, piNames, collabNames, funderName, timePeriod, keywordList);
+	for (var x = 0; x < markers.length; x++) {
+		map.removeLayer(markers[x]);
+	}
+
+	markers.length = 0;
+
+
 	for (var i = 0; i < parsedD.length; i++) {
-		markers.push(L.circle([parsedD[i].latitude, parsedD[i].longitude], {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.25,
-			radius: 50
-		}).addTo(map));
 
 		var Project = parsedD[i].Project;
 		var PIs = parsedD[i]["PI "];
@@ -243,10 +271,19 @@ function filter() {
 		var coordsLat = parsedD[i].latitude;
 		var coordsLong = parsedD[i].longitude;
 
-		var metadata = `
+		if (Project.includes(projectName) && site.includes(researchNames) && PIs.includes(piNames) && CoPIs.includes(copiNames) && Collabs.includes(collabNames) &&
+			Funder.includes(funderName) && TimePeriod.includes(timePeriod) && keywords.includes(keywordList)) {
+			const markerI = (L.circle([parsedD[i].latitude, parsedD[i].longitude], {
+				color: 'red',
+				fillColor: '#f03',
+				fillOpacity: 0.25,
+				radius: 50
+			}).addTo(map));
 
-<header id="rname" style="font-size:large; text-align:center; font-weight:800;">${Project}</header>
-<section id="Full_section">
+			var metadata = `
+
+								<header id="rname" style="font-size:large; text-align:center; font-weight:800;">${Project}</header>
+									<section id="Full_section">
 											FUNDER AND TIME PERIOD
                                             <div id="fund_section" style="text-align:center;">
                                                 <div id="funder_main" style="padding:2px; display:inline-block; width:43%;">
@@ -268,27 +305,31 @@ function filter() {
 													<div class="rounded_button" onclick="navigate(redirectGMapNav, coordsToStr(homeCoords), coordsToStr( [${parseFloat(parsedD[i].latitude)}, ${parseFloat(parsedD[i].longitude)}] ))">Navigate to Site</div>
 												</div>
 											</div>
-</section>
+									</section>
 
 
 `;
 
-		console.log("===>", Project, PIs, CoPIs, Collabs);
-		console.log(markers[i]);
-		markers[i].bindPopup(metadata);
-		markers[i].on('click', function (e) {
+			//	console.log("===>", Project, PIs, CoPIs, Collabs);
+			//		console.log(markers[i]);
 
-			if (map['_zoom'] <= 11) {
-				console.log(e);
-				map.setView(e.latlng, 18);
-				map.setZoom(16);
-			}
-		});
+			markerI.bindPopup(metadata);
+			markerI.on('click', function (e) {
+				if (map['_zoom'] <= 12) {
+					console.log(e);
+					map.setView(e.latlng, 18);
+					map.setZoom(16);
+				}
+			});
 
-    }
+			markers.push(markerI);
+		}
+
+	}
+
 }
 
-filter();
+filter("","","","","","","","");
 console.log(GeoCode("SFU"));
 
 function changeTileType(tileURL) {
@@ -296,9 +337,6 @@ function changeTileType(tileURL) {
 }
 
 function closeRightPane() {
-	settingsPne.style.display = "none";
-	settingsBtn.style.display = "block";
-
 	if (infoPanel.style.display != 'none') {
 		infoPanel.style.display = "none";
 		
@@ -306,10 +344,44 @@ function closeRightPane() {
 	adjustWin();
 }
 
+
+
+function searchLocalDB(query) {
+	for (var i = 0; i < parsedD.length; i++) {
+		var Project = parsedD[i].Project;
+		var PIs = parsedD[i]["PI "];
+		var CoPIs = parsedD[i]["Co-PI(s)"];
+		var Collabs = parsedD[i]["Collaborators\n(not funders)"];
+		var Funder = parsedD[i].Funder;
+		var TimePeriod = parsedD[i]["Funding period"];
+		var keywords = parsedD[i]["Research keywords"];
+		var site = parsedD[i]["Research Sites"];
+		var coordsLat = parsedD[i].latitude;
+		var coordsLong = parsedD[i].longitude;
+
+		if (Project.includes(query) || Funder.includes(query) || TimePeriod.includes(query) || site.includes(query)) {
+			return parsedD[i];
+		}
+	}
+
+	return null;
+}
 //console.log(parsedD[0].latitude, parsedD[1].longitude);
 search.addEventListener('keypress', function (keyin) {
+
+	var coords = null;
 	if (keyin.key === 'Enter') {
-		var coords = GeoCode(search.value);
+
+		const dbRes = searchLocalDB(search.value);
+
+		if (dbRes == null) {
+			coords = GeoCode(search.value);
+
+
+		}
+		else {
+			coords = [dbRes.latitude, dbRes.longitude];
+        }
 
 		if (coords != null && coords.length > 0) {
 			map.setZoom(17);
@@ -323,15 +395,6 @@ homebutton.addEventListener('mousedown', function (clicked) {
 });
 
 homebutton.addEventListener('click', function (clicked) {
-	if (sw_Location.checked) {
-
-		navigator.geolocation.getCurrentPosition(function (data) {
-			homeCoords = [data.coords.latitude, data.coords.longitude];
-
-		}, failure);
-
-	}
-
 	map.setView(homeCoords, 1);
 	map.setZoom(3);
 	adjustWin();
@@ -390,21 +453,6 @@ filtersBtn.addEventListener('click', function (clicked) {
 	adjustWin();
 });
 
-defStyleBtn.addEventListener('click', function (clicked) {
-	changeTileType(defaultStyle);
-
-});
-
-lightStyleBtn.addEventListener('click', function (clicked) {
-	changeTileType(lightStyle);
-
-});
-
-darkStyleBtn.addEventListener('click', function (clicked) {
-	changeTileType(darkStyle);
-
-});
-
 function coordsToStr(coords) {
 	return coords[0] + ',' + coords[1];
 }
@@ -420,28 +468,6 @@ function failure() {
 }
 
 console.log(window.innerHeight*0.75);
-sw_Location.addEventListener('click', function (sw_click) {
-	console.log("HW");
-	if (sw_Location.checked) {
-
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (data) {
-				homeCoords = [data.coords.latitude, data.coords.longitude];
-
-				homebutton.src = "Locate.png";
-			}, failure);
-		}
-		else {
-			alert("Failed to obtain your location. Check your permissions and try again.");
-			homebutton.src = "HomeIcon.png";
-			sw_Location.checked = false;
-		}
-	}
-	else {
-		homebutton.src = "HomeIcon.png";
-    }
-
-});
 
 adjustWin();
 
