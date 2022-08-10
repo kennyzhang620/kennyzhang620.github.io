@@ -338,6 +338,13 @@ def run_server():
                 
         print("Current market value of investments:", totalInv, "Lower bounds:", lowerB, "Upper bounds:", upperB, "G/L:" , str((totalInv/originalInv - 1)*100)+'%')
         
+        try:
+             f = open(extPath + "log.txt", "a")
+             f.write(datetime.today().strftime('%Y-%m-%d %H:%M:%S') + " " + "TOTAL VALUE: " + ' => ' + str(totalInv) + ' G/L: ' + str((totalInv/originalInv - 1)*100)+'%' + '\n')
+             f.close()
+        except:
+             print("Failed to log event")
+             sendNotifyEmail("kennyz620@hotmail.com", messageError("Unable to log event"))
         
         time.sleep(sleepTime)
         
