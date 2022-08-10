@@ -182,6 +182,7 @@ def getEquityData(equity):
         print("Error with query")
 
 equities = []
+Stats_Plot = []
 
 #sendNotifyEmail("kennyz620@hotmail.com", "Kenny");
 
@@ -337,7 +338,7 @@ def run_server():
                     flags[1] = False
                 
         print("Current market value of investments:", totalInv, "Lower bounds:", lowerB, "Upper bounds:", upperB, "G/L:" , str((totalInv/originalInv - 1)*100)+'%')
-        
+        Stats_Plot.append((len(Stats_Plot), totalInv));
         try:
             f = open(extPath + "log.txt", "a")
             f.write(datetime.today().strftime('%Y-%m-%d %H:%M:%S') + " " + "TOTAL VALUE: " + ' => ' + str(totalInv) + ' G/L: ' + str((totalInv/originalInv - 1)*100)+'%' + '\n')
@@ -345,7 +346,14 @@ def run_server():
         except:
             print("Failed to log event")
             sendNotifyEmail("kennyz620@hotmail.com", messageError("Unable to log event"))
-        
+
+        try:
+            f = open(extPath + "stats.txt", "w")
+            f.write("Stats_Plot = " + str(Stats_Plot));
+            f.close()
+        except:
+            print("Failed to plot event")
+
         time.sleep(sleepTime)
         
 def main():
@@ -388,6 +396,18 @@ except:
     fail = True
     print("No server config found or invalid config. Creating new configuration.")
     init()
+
+try:
+    f = open(extPath + "stats.txt", "r")
+    exec(f.read())
+    f.close()
+except:
+    try:
+        f = open(extPath + "stats.txt", "w")
+        f.close()
+    except:
+        print("Unable to open stats file. Plotting is disabled.");
+
 
 if (not fail):
     main()
