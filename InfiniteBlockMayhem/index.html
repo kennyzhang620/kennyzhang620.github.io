@@ -1,154 +1,106 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us">
-
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="google-site-verification" content="Z7UN_0wixgfU1NCM8GBne8ErVuW7AanCZsQDcEafyEo" />
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="manifest" href="manifest.json">
-
     <title>Infinite Block Madness!</title>
-    <style>
-
-        html {
-            box-sizing: border-box;
-        }
-
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
-
-        body {
-            margin: 0;
-            background: #444;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #gameContainer {
-            width: 100vw;
-            height: 100vh;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-            /* try to handle mobile dialog */
-            canvas + * {
-                z-index: 2;
-            }
-
-        .logo {
-            display: block;
-            max-width: 100vw;
-            max-height: 70vh;
-        }
-
-        .progress {
-            margin: 1.5em;
-            border: 1px solid white;
-            width: 50vw;
-            display: none;
-        }
-
-            .progress .full {
-                margin: 2px;
-                background: white;
-                height: 1em;
-                transform-origin: top left;
-            }
-
-        #loader {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .spinner,
-        .spinner:after {
-            border-radius: 50%;
-            width: 5em;
-            height: 5em;
-        }
-
-        .spinner {
-            margin: 10px;
-            font-size: 10px;
-            position: relative;
-            text-indent: -9999em;
-            border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-left: 1.1em solid #ffffff;
-            transform: translateZ(0);
-            animation: spinner-spin 1.1s infinite linear;
-        }
-
-        @keyframes spinner-spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
 </head>
-
-<body>
-    <div id="gameContainer"></div>
-    <div id="loader">
-        <img class="logo" src="banner.png">
-        <div class="spinner"></div>
-        <div class="progress"><div class="full"></div></div>
+  <body class="dark">
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
     </div>
-</body>
-
-<script src="Build/UnityLoader.js"></script>
-<script>
-    // CODELAB: Register service worker
+    <div id="loading-cover" style="display:none;">
+      <div id="unity-loading-bar">
+        <div id="unity-logo"><img src="banner.png"></div>
+        <div id="unity-progress-bar-empty" style="display: none;">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <div id="unity-fullscreen-button" style="display: none;"></div>
+    <script>
+             // CODELAB: Register service worker
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('../InfiniteBlockMayhem/service-worker.js')
-                .then((reg) => {
-                    console.log('Service worker registered.', reg);
-                });
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../InfiniteBlockMayhem/service-worker.js')
+        .then((reg) => {
+          console.log('Service worker registered.', reg);
+            });
+     });
+    }
+
+      const hideFullScreenButton = "";
+      const buildUrl = "Build";
+      const loaderUrl = buildUrl + "/InfiniteBlockMayhem.loader.js";
+      const config = {
+        dataUrl: buildUrl + "/InfiniteBlockMayhem.data.unityweb",
+        frameworkUrl: buildUrl + "/InfiniteBlockMayhem.framework.js.unityweb",
+        codeUrl: buildUrl + "/InfiniteBlockMayhem.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Zhang Studios",
+        productName: "Infinite Block Madness!",
+        productVersion: "1.0",
+      };
+
+      const container = document.querySelector("#unity-container");
+      const canvas = document.querySelector("#unity-canvas");
+      const loadingCover = document.querySelector("#loading-cover");
+      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
+      const progressBarFull = document.querySelector("#unity-progress-bar-full");
+      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      const spinner = document.querySelector('.spinner');
+
+      const canFullscreen = (function() {
+        for (const key of [
+            'exitFullscreen',
+            'webkitExitFullscreen',
+            'webkitCancelFullScreen',
+            'mozCancelFullScreen',
+            'msExitFullscreen',
+          ]) {
+          if (key in document) {
+            return true;
+          }
+        }
+        return false;
+      }());
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      }
+      loadingCover.style.display = "";
+
+      const script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          spinner.style.display = "none";
+          progressBarEmpty.style.display = "";
+          progressBarFull.style.width = `${100 * progress}%`;
+        }).then((unityInstance) => {
+          loadingCover.style.display = "none";
+          if (canFullscreen) {
+            if (!hideFullScreenButton) {
+              fullscreenButton.style.display = "";
+            }
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }
+        }).catch((message) => {
+          alert(message);
         });
-    }
-
-    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/InfiniteBlockMayhem.json", { onProgress: UnityProgress });
-    function UnityProgress(gameInstance, progress) {
-        if (!gameInstance.Module) {
-            return;
-        }
-        const loader = document.querySelector("#loader");
-        if (!gameInstance.progress) {
-            const progress = document.querySelector("#loader .progress");
-            progress.style.display = "block";
-            gameInstance.progress = progress.querySelector(".full");
-            loader.querySelector(".spinner").style.display = "none";
-        }
-        gameInstance.progress.style.transform = `scaleX(${progress})`;
-        if (progress === 1 && !gameInstance.removeTimeout) {
-            gameInstance.removeTimeout = setTimeout(function () {
-                loader.style.display = "none";
-            }, 2000);
-        }
-    }
-</script>
-
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>
-
