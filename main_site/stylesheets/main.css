@@ -1,0 +1,515 @@
+/* Global group-agreed styles. DO NOT TOUCH THIS SECTION AS IT WILL RESULT IN MERGE CONFLICTS */
+
+/* fonts */
+@font-face {
+    font-family: 'raleway';
+    src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'playfair_display';
+    src: url(../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+html {
+    scroll-behavior: smooth
+}
+header {
+
+}
+
+body {
+    /* this prevents the scrollbar being needed to go left-right */
+    overflow-x: hidden;
+    background-color: white;
+    width: 103%;
+    font-family:'Raleway';
+    /*Removes black bars*/
+}
+
+h1 {
+    color:black;
+    font-weight:900;
+}
+
+
+h2{
+    color:black;
+    font-weight:700;
+}
+h3 {
+    
+}
+
+nav {
+}
+
+p {
+
+}
+
+footer {
+
+}
+
+.site_section {
+    padding: 10%;
+    font-family: 'Raleway';
+}
+
+.cell_outer {
+    padding:10px;
+    width:50%;
+}
+
+.cell_outer_2 {
+    padding:10px;
+    display:flex;
+    animation-name: fadein;
+    animation-duration: 1s;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+#landing {
+    padding: 0% 0% 0% 2.5rem;
+    
+}
+
+#mobile_btn_m {
+    display: none;
+}
+.subdivide_1 {
+
+}
+.cell_inner {
+    border-radius:30px;
+    padding:10px;
+    text-align:center;
+    width: 21vw;
+}
+.list {
+    display:flex;
+    overflow:scroll;
+    text-align:center;
+}
+
+img {
+    background-color: white;
+    border-radius:10px;
+    width:100%;
+}
+.image_gallery {
+    display: grid;
+      gap: 1px;
+      grid-template-columns: repeat(3, 1fr);
+      padding:10px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.experience_list {
+    
+}
+
+.proj_cell {
+        text-align: center;
+        padding-left: 4rem;
+}
+
+.suggestions_box {
+    background-color: white;
+    padding:10px;
+    border-radius: 30px;
+    text-align:center;
+}
+
+.form-input {
+    width:100%;
+    height: 45vh;
+    border-radius: 30px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 600px) {
+    .experience_list {
+        
+        height: 70rem;
+        display: flex;
+        overflow: auto;
+    }
+    
+    .cell_outer_2 {
+        display:block;
+    }
+    
+    .subdivide_1 {
+        width: 100%;
+    }
+
+    #resp {
+        width:82vw;
+    }
+    
+    .proj_cell {
+        padding-left: 1rem;
+    }
+    
+    .cell_inner {
+        border-radius:30px;
+        padding:10px;
+        text-align:center;
+        width:100%;
+    }
+    
+    #mobile_btn_m {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1076px) {
+    #mobile_btn_m {
+        display: block;
+    }
+}
+
+.inner_layer {
+    background-color: rgba(0,0,0,0.5);
+width: 100%;
+height: 100%;
+position: fixed;
+}
+
+.information {
+    border-radius: 30px;
+    overflow: scroll;
+    z-index: 1000;
+    position: fixed;
+    background-color: rgba(255,255,255,1);
+    margin: 3rem;
+    padding: 10px;
+    height: 90%;
+    animation-name: open2;
+    animation-duration: 1s;
+    animation-direction: normal;
+}
+
+@keyframes open2 {
+    from {
+        height:0%;
+    }
+
+    to {
+        height:90%;
+    }
+}
+/* To avoid merge conflicts, touch only your assigned section.*/
+/* Also make custom class names/tag/ids unique. */
+
+/* Styles for each section 1*/
+
+
+/* Ticket Module (Section 1 - Stin)*/
+
+.ticket_main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    width: 500px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-top: 1%;
+}
+
+.ticket_subsection {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 50%;
+}
+
+.button_ticket {
+    font-family: 'raleway', 'sans-serif';
+    font-weight: bold;
+
+
+    background-color: #A17C3F;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 4% 30%;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10pt;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+    .button_ticket:hover {
+        background-color: #b1986e;
+    }
+
+.ticket_main h2 {
+    font-family: 'raleway', 'sans-serif';
+    color: white;
+    font-size: 11pt;
+}
+
+.ticket_main h1 {
+    font-family: 'playfair_display';
+    color: white;
+    margin: 50% 0;
+    text-align: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 60rem) {
+
+    [class*="ticket_main"] {
+        width: 50%;
+        margin: 1.5% auto;
+        flex-direction: column;
+    }
+
+    .ticket_main h1 {
+        margin: 10% 0;
+        text-align: center;
+    }
+
+    .ticket_main h2 {
+        margin: 4%;
+    }
+
+    .ticket_subsection {
+        height: 60%;
+    }
+
+    .button_ticket {
+        padding: 4% 0%;
+        white-space: nowrap;
+        margin: 1% 0;
+    }
+}
+
+/* End of Stin S1 */
+
+.site_part1 {
+    background-image: url(../images/main_img.png);
+    background-size: cover;
+}
+
+.logo_header {
+    width: 100%;
+    height: 87%;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.logo_vso {
+    width: 106%;
+    height: 15%;
+    text-align: center;
+    display: block;
+}
+
+.title {
+    width: 64%;
+    height: 40%;
+    text-align: center;
+}
+
+/* Nav bar stuff ~ Stin */
+
+.front_nav {
+    width: 80%;
+    border-radius: 0px 0px 45px 45px;
+    background-color: rgba(0,0,0, 0.95);
+    color: white;
+    /* Center the nav */
+    text-align: center;
+    align-items: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: fixed;
+    /* move the sticky nav in front of all other elements */
+    z-index: 1;
+}
+
+
+.button_nav {
+    font-family: 'raleway', 'sans-serif';
+    font-weight: bold;
+    margin-bottom: 2%;
+
+    background-color: #A17C3F;
+    border: none;
+    border-radius: 35px;
+    transform: translate(0,15%);
+    padding: 1rem 4rem;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+}
+
+    .button_nav:hover {
+        background-color: #b1986e;
+    }
+
+.front_nav a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.front_nav a:active {
+    outline: 0;
+}
+
+.front_nav a {
+    color: inherit;
+    text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+    transition: text-decoration-color 300ms;
+}
+
+#img_nav {
+    width: 9vw;
+    padding-right: 12%;
+}
+
+.img_button_nav {
+    /* width: 50px; */
+    width: 69px;
+    padding-right: .5rem;
+    background-color:transparent;
+    border-radius:0px;
+}
+
+.img_button_nav:hover {
+    /* width: 60px; */
+    width: 69px;
+    padding-right: .5rem;
+}
+
+.main_selectors {
+    display:flex;
+}
+
+.main_selectors a {
+    color:black;
+}
+
+.main_selectors a:hover {
+    color:gray;
+}
+
+.item {
+    padding:2px;
+    font-family:sans-serif;
+    font-weight:200;
+}
+
+.selectors {
+    font-family: 'raleway', sans-serif;
+    display: inline-block;
+    /* top | right | bottom | left */
+    margin: 1vw 10% 1vw 0;
+}
+
+.selectors_m {
+    font-family: 'raleway', sans-serif;
+    /* top | right | bottom | left */
+    transform: scale(-1,1);
+    font-weight: 700;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+}
+
+
+.mobile_nav {
+    position: fixed;
+    float: right;
+    width: 100%;
+    height: 10%;
+    z-index: 1;
+    transform: scale(-1,1);
+}
+
+.mobile_nav_o {
+    width: 0%;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    animation-name: open;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-play-state: paused;
+    z-index: 1;
+}
+
+.navigation_vert {
+    text-align: center;
+}
+
+.nav_button_mob {
+    width: 50px;
+    padding: 10px;
+    padding-right: .5rem;
+}
+
+.button_mobi {
+    transform: scale(-1,1);
+}
+
+@keyframes open {
+    from {
+        width: 0%;
+        height:100%;
+    }
+
+    to {
+        width: 100%;
+        height:100%;
+    }
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+/* End of section */

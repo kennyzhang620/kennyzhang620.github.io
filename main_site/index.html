@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>testpage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+                    <link rel="stylesheet" href="stylesheets/grid.css">
+                        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+                            <script src="https://kit.fontawesome.com/88af899100.js" crossorigin="anonymous"></script>
+                        </head>
+    <body onresize="switchModesAuto(window.innerWidth, window.innerHeight)">
+        <main>
+            <header>
+            </header>
+            
+            <div class="mobile_nav" id="mobile_navigator" >
+                <div class="mobile_nav_o" id="nav_menu">
+                    <div class="navigator" style="display:inline-block;">
+                        <div class="nav_button_mob" id="mobile_btn" onclick="switchState()"><img alt="Tap for Mobile Menu" id="img_button_nav_m" class="img_button_nav" src="icons/mobile_ham.svg" alt="Mobile menu navigation"></div>
+                    </div>
+                    
+                    <div class="navigation_vert">
+                        <div class="selectors_m"><a href="#header_p">PROJECTS</a></div>
+                        <div class="selectors_m"><a href="#site_part4">WORK EXPERIENCE</a></div>
+                        <div class="selectors_m"><a href="#site_part5">SUGGESTIONS</a></div>
+                        <div class="selectors_m"><img class="img_button_nav" style="filter: invert(62%) sepia(12%) saturate(1860%) hue-rotate(359deg) brightness(229%) contrast(80%);" src="icons/res.svg" onclick="switchModesTicket(window.innerWidth, window.innerHeight)"></div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- Sticky Nav -->
+            <div class="main_nav" id="def_nav">
+                <div class="front_nav">
+                    <a href="#logo_home"><div class="selectors"><img class="img_button_nav" src="icons/logotype.svg" style="background-color:none" alt="Home"></div></a>
+                    <div class="selectors"><a href="#header_p">PROJECTS</a></div>
+                    <div class="selectors"><a href="#site_part4">WORK EXPERIENCE</a></div>
+                    <div class="selectors"><a href="#site_part5">SUGGESTIONS</a></div>
+                    <button class="button button_nav" onclick="switchModesTicket(window.innerWidth, window.innerHeight)">
+                        <div style="float:right">
+                            RESUME
+                        </div>
+                    </button>
+                    
+                </div>
+            </div>
+            
+            <div id="project_overlay" class="inner_layer" style="display:none;">
+                <div class="information">
+                    <div class="nav_header">
+                        <h1 style="color:black;"><div id="proj">Project Name</div></h1>
+                        <div id="button_back" style="float:right;transform: translate(0,-150%); font-size:20pt;" onclick="closeOverlay()">X</button></div>
+                        <div class="flairs">
+                            <button class="button button_nav" style="background-color: green;">
+                                <div style="float:right">C#</div>
+                            </button>
+                            <button class="button button_nav" style="background-color: black;">
+                                <div style="float:right">Unity</div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="image_gallery"></div>
+                    <p style="padding:5px;"><div id="description"></div></p>
+                    <h2>Collaborators</h3>
+                        <div class="collabs"><div id="collab">Parmida Saghafi</div></div>
+                        <button class="button button_nav"><div id="btn_gen"></div>
+                        </button>
+                </div>
+            </div>
+            <!--  -->
+            <section id="landing" class="site_section">
+                <div class="nav_button_mob" id="mobile_btn_m" ><img alt="Tap for Mobile Menu" id="img_button_nav_m" class="img_button_nav" src="icons/logotype.svg" style="filter: invert(100);"></div>
+            
+            
+            </section>
+            <section id="experiences" class="site_section">
+                <h1>My Experience</h1>
+                <div class="main_selectors" style="display:flex;">
+                    <a onclick="load_job_type('work')"><div class="item" style="font-weight:800;">WORK</div></a>
+                    <a onclick="load_job_type('volunteer')"><div class="item">VOLUNTEER</div></a>
+                    <a><div class="item">AWARDS</div></a>
+                </div>
+                <div class="experience_list">
+ 
+                </div>
+                <section id="exp_logos" class="site_section">
+                    <div class="exp_list list">
+                    </div>
+                </section>
+            </section>
+            <section id="joke" style="text-align:center; font-family: 'Courier'; ">git push --force? drop table? Absolutely!</section>
+            <section id="projects" class="site_section">
+                <h1 style="font-family: 'Courier New'"><div id="header_p">/></div></h1>
+                <div class="project_list list">
+                </div>
+            </section>
+            
+            <section id="suggestions" class="site_section">
+                <div class="suggestions_box">
+                    <h1 style="color:black">Suggestions</h1>
+                    <textarea class="form-input" name="suggestions" rows="4" cols="50"/></textarea>
+                    <button class="button button_nav">Submit!</div>
+                </div>
+            </section>
+            
+            <!-- section 4 -->
+            <section class="site_part4" id="site_part4">
+                
+            </section>
+            <!-- end of section 4 -->
+            
+            <section class="site_part5" id="site_part5">
+                
+            </section>
+            
+            <!--End of section 5-->
+            
+            <section id="resume_sect" class="site_section">
+                <h1>Resume</h1>
+                <object data="files/Resume_Main.pdf" type="application/pdf" width="100%" height="800px">
+                    <p>Unable to display PDF file. <a href="files/Resume_Main.pdf">Download</a> instead.</p>
+                </object>
+            </section>
+            <footer>
+            </footer>
+        </main>
+        <script src="scripts/sample_data.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>

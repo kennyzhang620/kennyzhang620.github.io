@@ -1,0 +1,579 @@
+/*------------------------------seat section site-----------------------------*/
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%; 
+  padding: 2rem 50px;
+}
+
+.top-1of3 {
+  order: 2; 
+  flex: 1;
+  text-align: center;
+}
+
+.top-2of3 {
+  order: 1; 
+  width: 50px;
+}
+
+.top-2of3 svg {
+  width: 50px;
+  height: 50px;
+}
+
+.top-3of3 {
+  order: 3;
+  width: 65px;
+}
+
+#exit_icon {
+  display: none; 
+  width: 30px;
+  height: 30px;
+}
+
+#fixed-width{
+	width: 50px;
+}
+
+#fixed-width svg {
+	width: 50px;
+	height: 50px;
+}
+
+#empty-space{
+  background: transparent;
+}
+
+
+#flexible-width{
+	flex: 1;
+}
+
+#background-image{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; 
+	width: 100vw; 
+}
+
+/*------------------------------seat map site-----------------------------*/
+
+.main_map_container {
+  display: grid;
+  grid-template-columns: 15% 65% 20%; 
+  grid-template-rows: auto;
+  align-items: start; 
+}
+
+.left_col {
+  grid-column: 1; 
+  z-index: 2;
+}
+
+.seat_map_img {
+  grid-column: 2; 
+  z-index: 5;
+}
+
+.cart_wrapper {
+  grid-column: 3; 
+  position: relative; 
+  z-index: 1; 
+}
+
+.cart_container,
+.payment_cart_container{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%; 
+  grid-template-rows: auto; 
+}
+
+#cart_empty,
+#payment_cart_empty{
+	grid-column: 1;
+}
+
+#cart_section{
+	grid-column: 2;
+}
+
+#cart_row{
+	grid-column: 3;
+}
+
+#cart_seat{
+	grid-column: 4;
+}
+
+#cart_price{
+	grid-column: 5;
+}
+
+.price_container,
+.payment_price_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cart_assistant,
+#payment_cart_assistant{
+	display: flex;
+  align-items: center;
+}
+
+
+/*--------------------------- Popup window -----------------------------*/
+
+.popup_seat_type{
+	display: grid;
+	grid-template-columns: 50% 25% 25%;
+	grid-template-rows: auto;
+	align-items: start;
+}
+
+#popup_section{
+	grid-column: 1;
+}
+
+#popup_row{
+	grid-column: 2;
+}
+
+#popup_seat{
+	grid-column: 3;
+}
+
+.popup_seat_selection{
+	display: grid;
+	grid-template-columns: 50% 25% 25%;
+	grid-template-rows: auto;
+	align-items: start;
+}
+
+#popup_section_selecting{
+	grid-column: 1;
+}
+
+#popup_row_selecting{
+	grid-column: 2;
+}
+
+#popup_seat_selecting{
+	grid-column: 3;
+}
+
+.popup_button{
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*--------------------------- Media Querires ---------------------------*/
+
+/*------------------ top banner -----------------------*/
+
+@media screen and (max-width: 60rem) {
+
+	.base-timer__label, .base-timer{
+		font-size: 3vw;
+	}	
+
+  .top {
+      flex-wrap: wrap;
+      padding: 0.75rem;
+      padding-left: 0.25rem;
+  }
+  
+	#exit_icon {
+      display: block; 
+      order: 0; 
+      margin-right: 1.2rem;
+  }
+
+	#exit_icon img {
+      width: 100%;
+      height: 100%;
+  }
+
+  .top-1of3 {
+      order: 1; 
+      flex: 1;
+      text-align: left;
+  }
+
+  .top-2of3 {
+      order: 2; 
+      width: 50px;
+  }
+
+  .top-2of3 svg {
+      width: 50px;
+      height: 50px;
+  }
+
+  .top-3of3 {
+      order: 3;
+      width: 15px;
+  }
+}
+
+/*------------------ticket section---------------------*/
+@media(max-width:60rem){
+
+	.seat_sections{
+		top: 41%;
+	}
+
+	.seat_sections a{
+		font-size: 5vw;
+		margin-bottom: 11vh;
+	}
+
+	.main_container h1,.main_container h2,.main_container h3{
+		font-size: 2.5vw;
+	}
+
+	.main_containerh2, .main_containerh3{
+		text-align: center;
+	}
+
+	.main_container ul{
+		list-style: none;
+		position: relative;
+		right: 6vw;
+		font-size: 3vw;
+		font-weight: bold;
+	}
+
+	h1{
+		font-size: 3vw;
+	}
+
+	img{
+		top: -18%; 
+	}
+
+/*	html,body{
+		text-align: center;margin: 0; height: 100% 
+	}*/
+
+	.redirecting_exit{
+		position: absolute;
+		top: 80%;
+		left: 0;
+		margin: 0;
+		padding: 0.5vh;
+		font-size: 2vw;
+
+		width: 100%;
+		height: 25%;
+		background-color: #212343;
+
+
+	}
+
+}
+/*------------------ticket seatmap---------------------*/	
+.mobile_container {
+    display: none; 
+}
+
+@media screen and (max-width: 60rem) {
+/*	header{
+		overflow: auto;
+	}*/
+	body#ticketSeatmapPage {
+	  overflow: hidden;
+	}
+  .cart_wrapper {
+    display: none; 
+  }
+
+  .main_map_container {
+    grid-template-areas: 
+      'seat_map_img'
+      'seat_map'; /* Position the seating map below the image */
+    grid-template-columns: 100%; /* stack everything vertically */
+  }
+
+  .redirecting_map_exit {
+    display: none; 
+  }
+
+  .seat_map_img {
+    grid-area: seat_map_img;
+    margin-bottom: 1.5rem;
+  }
+
+  .seat_map {
+    grid-area: seat_map;
+  }
+  #seatMapIcon {
+  	display: none;
+	}
+
+  .seat_map a {
+    font-size: 3vw; 
+    width: 80vw; 
+    height: 12vh; 
+  }
+
+  .cart{
+ 		padding: 2vh 4vw; 	
+  }
+
+  #cart_summary {
+    font-size: 5vw; 
+  }
+
+	.cart_container{
+		border-top: 1px solid #eaeaea; 
+	}  
+
+	#your_tickets{
+		font-size: 3.75vw;
+	}
+
+	.cart_container{
+		border-bottom: 1px solid #eaeaea; 
+	  font-size: 2.75vw;
+	}
+
+	#cart_total_price{
+		font-weight: bolder;
+		font-size: 5vw;
+	  margin: 1vh 0 1vh 0;
+	}
+
+	#cart_total{
+	  font-size: 3.75vw;
+	  margin-left: 3.75vw;
+	  padding-top: 1vw;
+	}
+
+	#cart_assistant{
+		font-size: 2.5vw;
+	  border-top: 1px solid #eaeaea;  
+	}
+
+	#phoneIcon {
+	  height: 2.5vh; 
+	  margin: 2vw;
+	}	
+
+  /* Adjust the icon size */
+  #seatMapIcon {
+    width: 30vw;
+    height: 30vh;
+  }
+
+  .left_col_map{
+  	display: none;
+  }
+}
+
+	/*----------------drop down menu-------------------*/
+@media screen and (max-width: 60rem) {	
+  .mobile_container {
+    display: block; 
+    background: white;
+    width: 100%;
+    margin: 0;
+  }
+
+  #mobile_seat_map{
+  	font-family: 'satoshi_complete', 'sans-serif';  	
+  	font-weight: 700;
+
+    border: 1px solid grey; 
+    border-radius: 3px;
+    width: 90%; 
+    height: 5vh;
+    margin: 1rem; 
+  }
+
+  .main_map_container {
+    grid-template-columns: 100%; /* stack everything vertically on smaller screens */
+    grid-template-rows: auto auto; /* specify two rows for seat_map_img and mobile_container */
+    grid-template-areas: 
+      'seat_map_img'
+      'mobile_container'; 
+  }
+
+	#seat_options {
+	  list-style-type: none;
+	  border-top: 3px solid #ccc;
+	  padding: 0;
+	  height: 500px; /* Set to whatever height you want */
+	  overflow-y: auto; 	  
+	}
+
+	#seat_options li {
+	  display: flex; 
+	  justify-content: space-between; 
+	  align-items: center;
+	  padding: 1rem;
+	  border-bottom: 1px solid #ccc;
+	}
+
+	#seat_options li a {
+	  font-size: 1rem;
+	  text-decoration: none;
+	  color: black;
+	}
+
+	.mobile_price {
+	  font-size: 0.75rem;
+	  font-weight: 400;
+	  color: blue;
+	}
+
+	.mobile_price .taxes {
+	  font-size: 0.75em; 
+	  align-items: right;
+	  color: grey;
+	}
+
+
+  #nextButton {
+    display: block; /* Always show on smaller screens */
+  }	
+
+	@keyframes slideInRight {
+	  from {
+	    transform: translateX(100%);
+	  }
+	  to {
+	    transform: translateX(0);
+	  }
+	}  
+
+	@keyframes slideOutRight {
+	  from {
+	    transform: translateX(0);
+	  }
+	  to {
+	    transform: translateX(100%);
+	  }
+	}	
+
+	.cart_wrapper {
+	  display: none;
+	  position: fixed;
+	  top: 4.5rem;
+	  left: 0;
+	  width: 100%;
+	  height: 50%;
+	  background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay */
+	  z-index: 900; /* Make sure it's on top of other elements */
+
+  	animation: slideInRight 0.5s forwards; /* Apply the animation */
+		animation-fill-mode: forwards;  		  
+	}
+	.show {
+	  display: block;
+	}
+
+
+}
+
+/*------------------ticket payment---------------------*/
+@media(max-width:48rem){
+
+	.container {
+	  margin: 0;
+	  padding: 0;
+	  width: 100%;
+
+	  display: flex;
+	  flex-wrap: wrap;
+	}
+	.column_1{
+	  order:2;
+	  padding: 1rem 0;
+	  flex: 1 1 299px;  
+	}
+
+	.column_2 {
+	  order:1;
+	  padding: 0 0 1rem 0;	  
+	  flex: 1 1 299px;  
+	}
+
+	.payment_container {
+	  width: 90vw;
+	  max-width: 600px;
+	  margin: 0.5vh auto auto auto;
+	  display: flex;
+	  flex-direction: column;
+	  gap: 2vh;
+	}
+
+	.submit_payment_btn {
+	  position: fixed;
+	  bottom: 0;
+	  left: 0;
+	  width: 100%;
+	  padding: 2rem 0;
+	  border-radius: 0px;
+	  background-color: grey;  
+	}
+
+  #concertPic{
+	  display: block;
+	  margin:0; 
+	  width: 100%;  
+	}
+
+	.payment_icon {
+	  display: block;
+	  margin-bottom: 1.5rem; 
+	  margin-right: 15rem;
+	  width: 100%;
+	}	
+
+	#payment_cart_assistant{
+		padding-top: 1rem;
+	}	
+
+	.ticket_information_container{
+	  width: 100%;
+	  max-width: 600px;
+	  margin: 0 auto auto auto; 
+  	padding: 1rem 1rem 7rem 1rem;	  
+	  display: flex;
+	  flex-direction: column;
+	  gap: 2vh;  
+	  height: 42rem;  
+	  border-radius: 0;
+	}
+
+	.payment_container{
+		width:100%;
+	}
+
+	.personal_information_container{	
+	  padding: 2vh 2vh 7vh 2vh;
+	  border-radius: 0;	  
+	}	
+
+	.card_information_container{	
+	  padding: 2vh;
+	  background-color: #fff;
+	  box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+	  border-radius: 0;
+	  margin-bottom: 2vh;
+	}
+
+
+	.payment_cart_container{
+	  font-size: 0.6rem;
+
+	}	
+}
