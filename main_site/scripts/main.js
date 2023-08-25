@@ -39,6 +39,7 @@ const descripN = document.getElementById("description")
 const collabsN = document.getElementsByClassName("collabs")
 const btn = document.getElementById("btn_gen")
 const animateProjects = document.getElementById("header_p")
+const animateProjects2 = document.getElementById("skillshuffle")
 var selectedJob = 'work'
 
 var animI = 0;
@@ -55,7 +56,47 @@ function animateP() {
     }
 }
 
+// https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
+var state = -1;
+var skill = ""
+var ind = 0;
+function animateP2() {
+    const displayStr = makeid(10);
+    const skills = ['HTML', 'CSS', 'Javascript', 'Node.js' , 'Data Structures', 'C/C++', 'MATLAB', 'Python', 'Pandas', 'scikitlearn', 'SQL', 'PostgresSQL', 'MySQL', 'Computer Graphics']
+    
+    if (skill == "")
+        skill = skills[ind++];
+    
+    if (ind >= skills.length)
+        ind = 0;
+    
+    if (state++ > 15) {
+        animateProjects2.innerHTML = skill;
+        if (state > 100) {
+            state = 0;
+            skill = skills[ind++];
+        }
+    }
+    else {
+        animateProjects2.innerHTML = displayStr;
+    }
+}
+
+
 setInterval(animateP, 200);
+setInterval(animateP2, 50);
 function createflair(type, colour) {
     const flairHTML = `
                     <button class="button button_nav" style="background-color: ${colour}">
@@ -126,7 +167,7 @@ function createCellProj(proj, dataset, ind) {
     const HTMLL = `
                     <div class="cell_outer">
                         <div class="cell_inner" style="width: 100%;">
-                    <img src="${proj.img_url}" alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
+                    <img src="${proj.img_url}" style="max-height: 100%;"alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
                         </div>
                     <h2 style="text-align:center;">${proj.name}</h2>
                     </div>`
@@ -136,6 +177,7 @@ function createCellProj(proj, dataset, ind) {
 
 function createCellJob(job) {
     const HTMLL =  `
+                    <div class="cell_outer_1">
                         <div class="cell_outer_2">
                             <div class="subdivide_1">
                                 <div class="cell_inner">
@@ -148,6 +190,7 @@ function createCellJob(job) {
                         <div id="resp" style="text-align:left;">${job.description}</div>
                         </div>
                         </div>
+                    </div>
 `
     
     return HTMLL;
@@ -166,6 +209,7 @@ function createJobNN(job) {
 const project_list = document.getElementsByClassName("project_list")
 const experience_list = document.getElementsByClassName("experience_list")
 const exp_list = document.getElementsByClassName("exp_list")
+const selectors = document.getElementsByClassName("item")
 
 function load_projects(proj, db) {
     const listM = project_list[0]
@@ -195,15 +239,35 @@ function load_jobs(jobs, db) {
     }
 }
 
+function togglerSelector(ind, def, alt) {
+    console.log(selectors[0].style.fontWeight)
+    for (var i=0;i<selectors.length;i++) {
+        if (ind == i) {
+            selectors[i].style.fontWeight = alt;
+        }
+        else {
+            selectors[i].style.fontWeight = def;
+        }
+    }
+}
 function load_job_type(type) {
     if (type == 'work') {
         selectedJob = type
         load_jobs(jobdata);
+        togglerSelector(0, 300, 900);
+    
     }
     
     if (type == 'volunteer') {
         selectedJob = type
         load_jobs(volunteerdata);
+        togglerSelector(1, 300, 900);
+    }
+    
+    if (type == 'awards') {
+        selectedJob = type
+        load_jobs(volunteerdata);
+        togglerSelector(2, 300, 900);
     }
 }
 

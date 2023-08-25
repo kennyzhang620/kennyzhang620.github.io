@@ -11,6 +11,11 @@
     src: url(../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf);
 }
 
+@font-face {
+    font-family: 'AtkinsonBold';
+    src: url(../fonts/Atkinson_Hyperlegible/AtkinsonHyperlegible-Bold.ttf);
+}
+
 html {
     scroll-behavior: smooth
 }
@@ -27,6 +32,12 @@ body {
     /*Removes black bars*/
 }
 
+h {
+    font-family:'AtkinsonBold';
+    color:black;
+    font-weight:900;
+    font-size: 25pt;
+}
 h1 {
     color:black;
     font-weight:900;
@@ -62,11 +73,17 @@ footer {
     width:50%;
 }
 
+.cell_outer_1 {
+    padding-right:0px;
+}
+
 .cell_outer_2 {
     padding:10px;
     display:flex;
     animation-name: fadein;
     animation-duration: 1s;
+    border: none;
+    border-radius: 0px;
 }
 
 @keyframes fadein {
@@ -78,10 +95,7 @@ footer {
         opacity: 100%;
     }
 }
-#landing {
-    padding: 0% 0% 0% 2.5rem;
-    
-}
+
 
 #mobile_btn_m {
     display: none;
@@ -104,7 +118,9 @@ footer {
 img {
     background-color: white;
     border-radius:10px;
-    width:100%;
+    width: 100%;
+    max-height: 12rem;
+    object-fit: cover;
 }
 .image_gallery {
     display: grid;
@@ -130,6 +146,33 @@ img {
     
 }
 
+#pow_id {
+    width: 0.5rem;
+    height: 20rem;
+    left: 41vw;
+    position: relative;
+    background-color: black;
+}
+
+.segpart {
+    display:flex;
+}
+
+.line_seg {
+    height: 6px;background-color: black;
+}
+
+.line_seg2 {
+    width: 70%;height: 6px;background-color: black;
+}
+.text  {
+    line-height:2.2;
+}
+
+.text2 {
+    transform: translate(5px,-8px);font-size: 19pt; font-family: 'AtkinsonBold';font-weight: 900;
+    padding-right:1rem;
+}
 .proj_cell {
         text-align: center;
         padding-left: 4rem;
@@ -148,13 +191,32 @@ img {
     border-radius: 30px;
 }
 
+#landing_mob {
+    padding: 0px 0px 0px 1.5rem;
+    display:none;
+}
+
+.component_p {
+    padding-top:30rem;
+}
+
+#landing {
+
+    padding: 0% 10% 10% 10%;
+
+}
+
+#right_p {
+    float:right;
+}
 /* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .experience_list {
         
         height: 70rem;
         display: flex;
-        overflow: auto;
+        overflow-x:scroll;
+        overflow-y:clip;
     }
     
     .cell_outer_2 {
@@ -166,7 +228,7 @@ img {
     }
 
     #resp {
-        width:82vw;
+        width:65vw;
     }
     
     .proj_cell {
@@ -179,14 +241,69 @@ img {
         text-align:center;
         width:100%;
     }
+
+    .cell_outer_1 {
+        padding-right:10px;
+    }
     
-    #mobile_btn_m {
-        display: block;
+    .cell_outer_2 {
+        border: 3px solid beige;
+        border-radius: 12px;
+    }
+    
+    
+    .segpart {
+        display:block;
+    }
+
+    .line_seg {
+        height: 41vh;
+        position: relative;
+        background-color: black;
+        width: 1%;
+        left: 41vw;
+        bottom: 1rem;
+    }
+
+    .line_seg2 {
+        width: 1%;
+        height: 57vh;
+        position: relative;
+        background-color: black;
+        left: 41vw;
+    }
+    .text  {
+        line-height:1;
+        padding-left:1rem;
+    }
+
+    .text2 {
+        transform: translate(5px,-8px);font-size: 19pt; font-family: 'AtkinsonBold';font-weight: 900;
+        padding-right:1rem;
+    }
+    
+    .component_p {
+        text-align:center;
+    }
+    
+    #right_p {
+        float:none;
+    }
+    
+    #pow_id {
+        height: 41vh;
+            position: relative;
+            background-color: black;
+            width: 1%;
+            left: 41vw;
     }
 }
 
 @media screen and (max-width: 1076px) {
     #mobile_btn_m {
+        display: block;
+    }
+    #landing_mob {
         display: block;
     }
 }
@@ -198,6 +315,9 @@ height: 100%;
 position: fixed;
 }
 
+footer {
+    text-align:center;
+}
 .information {
     border-radius: 30px;
     overflow: scroll;
