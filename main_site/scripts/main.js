@@ -96,7 +96,7 @@ function animateP2() {
 
 
 setInterval(animateP, 200);
-setInterval(animateP2, 50);
+setInterval(animateP2, 10);
 function createflair(type, colour) {
     const flairHTML = `
                     <button class="button button_nav" style="background-color: ${colour}">
@@ -164,12 +164,18 @@ function loadInfoPanel(projectname, flairs, images, body, collabs, url) {
 }
 
 function createCellProj(proj, dataset, ind) {
+    var flairs = ""
+    for (var i=0;i<proj.flairs.length;i++) {
+        flairs += createflair(proj.flairs[i].type, proj.flairs[i].colour)
+    }
+    
     const HTMLL = `
                     <div class="cell_outer">
                         <div class="cell_inner" style="width: 100%;">
                     <img src="${proj.img_url}" style="max-height: 100%;"alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
                         </div>
                     <h2 style="text-align:center;">${proj.name}</h2>
+                    ${flairs}
                     </div>`
     
     return HTMLL;

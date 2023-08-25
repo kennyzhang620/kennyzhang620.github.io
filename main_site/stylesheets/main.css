@@ -29,7 +29,9 @@ body {
     background-color: white;
     width: 103%;
     font-family:'Raleway';
+    z-index:-1;
     /*Removes black bars*/
+    position: relative;
 }
 
 h {
@@ -150,8 +152,9 @@ img {
     width: 0.5rem;
     height: 20rem;
     left: 41vw;
-    position: relative;
     background-color: black;
+    position:relative;
+    z-index:-1;
 }
 
 .segpart {
@@ -160,18 +163,24 @@ img {
 
 .line_seg {
     height: 6px;background-color: black;
+    left: 41vw;
 }
 
 .line_seg2 {
     width: 70%;height: 6px;background-color: black;
+    left: 41vw;
 }
 .text  {
     line-height:2.2;
+    position:relative;
+    z-index:-1;
 }
 
 .text2 {
     transform: translate(5px,-8px);font-size: 19pt; font-family: 'AtkinsonBold';font-weight: 900;
     padding-right:1rem;
+    position:relative;
+    z-index:-1;
 }
 .proj_cell {
         text-align: center;
@@ -202,12 +211,17 @@ img {
 
 #landing {
 
-    padding: 0% 10% 10% 10%;
-
+    padding: 0% 10% 30% 10%;
+    background-image: url(../images/landing.svg);
+    background-size:contain;
 }
 
 #right_p {
     float:right;
+}
+
+.project_list {
+    width:50%
 }
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 700px) {
@@ -258,7 +272,6 @@ img {
 
     .line_seg {
         height: 41vh;
-        position: relative;
         background-color: black;
         width: 1%;
         left: 41vw;
@@ -268,7 +281,6 @@ img {
     .line_seg2 {
         width: 1%;
         height: 57vh;
-        position: relative;
         background-color: black;
         left: 41vw;
     }
@@ -292,10 +304,18 @@ img {
     
     #pow_id {
         height: 41vh;
-            position: relative;
             background-color: black;
             width: 1%;
             left: 41vw;
+    }
+    
+    .project_list {
+        width: 80%;
+        font-size:22pt;
+    }
+    
+    h2 {
+        font-size:18pt;
     }
 }
 
@@ -305,6 +325,11 @@ img {
     }
     #landing_mob {
         display: block;
+    }
+    
+    #landing {
+        background-image: url(../images/landing_mob.svg);
+        padding: 0% 10% 47% 10%;
     }
 }
 
@@ -494,6 +519,8 @@ footer {
     text-decoration: none;
     text-align: center;
     align-items: center;
+    position:relative;
+    z-index: -1;
 }
 
     .button_nav:hover {
