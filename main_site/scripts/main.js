@@ -100,7 +100,7 @@ setInterval(animateP2, 10);
 function createflair(type, colour) {
     const flairHTML = `
                     <button class="button button_nav" style="background-color: ${colour}">
-                        <div style="float:right">${type}</div>
+                        <div style="">${type}</div>
                     </button>
 `
     return flairHTML;
@@ -134,7 +134,7 @@ function clearElements(classL) {
 
 function generateBtn(url) {
     const htmlL = `<a href="${url}">
-                <div id='btn' style="text-align:center;">
+                <div id='btn' class="button button_nav"style="width:25vw; text-align:center;">
                         Go to Project!
                 </div>
                 </a>`
@@ -157,10 +157,14 @@ function loadInfoPanel(projectname, flairs, images, body, collabs, url) {
         appendElement(inner2, createImage(images[i].title, images[i].url))
     }
     descripN.innerHTML = body;
+    if (collabs.length > 0)
+        appendElement(inner3, `<h2>Collaborators</h2>`)
+        
     for (var i=0;i<collabs.length;i++) {
         appendElement(inner3, createCollabs(collabs[i]))
     }
-    btn.innerHTML = generateBtn(url)
+    
+    appendElement(inner3, generateBtn(url))
 }
 
 function createCellProj(proj, dataset, ind) {
@@ -172,7 +176,7 @@ function createCellProj(proj, dataset, ind) {
     const HTMLL = `
                     <div class="cell_outer">
                         <div class="cell_inner" style="width: 100%;">
-                    <img src="${proj.img_url}" style="max-height: 100%;"alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
+                    <img src="${proj.img_url}" style="width: 16vw; max-height: 100%;"alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
                         </div>
                     <h2 style="text-align:center;">${proj.name}</h2>
                     ${flairs}
@@ -272,7 +276,7 @@ function load_job_type(type) {
     
     if (type == 'awards') {
         selectedJob = type
-        load_jobs(volunteerdata);
+        load_jobs(awardsdata);
         togglerSelector(2, 300, 900);
     }
 }

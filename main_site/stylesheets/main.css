@@ -163,12 +163,12 @@ img {
 
 .line_seg {
     height: 6px;background-color: black;
-    left: 41vw;
+    position: relative;
 }
 
 .line_seg2 {
     width: 70%;height: 6px;background-color: black;
-    left: 41vw;
+    position: relative;
 }
 .text  {
     line-height:2.2;
@@ -221,243 +221,7 @@ img {
 }
 
 .project_list {
-    width:50%
-}
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 700px) {
-    .experience_list {
-        
-        height: 70rem;
-        display: flex;
-        overflow-x:scroll;
-        overflow-y:clip;
-    }
-    
-    .cell_outer_2 {
-        display:block;
-    }
-    
-    .subdivide_1 {
-        width: 100%;
-    }
-
-    #resp {
-        width:65vw;
-    }
-    
-    .proj_cell {
-        padding-left: 1rem;
-    }
-    
-    .cell_inner {
-        border-radius:30px;
-        padding:10px;
-        text-align:center;
-        width:100%;
-    }
-
-    .cell_outer_1 {
-        padding-right:10px;
-    }
-    
-    .cell_outer_2 {
-        border: 3px solid beige;
-        border-radius: 12px;
-    }
-    
-    
-    .segpart {
-        display:block;
-    }
-
-    .line_seg {
-        height: 41vh;
-        background-color: black;
-        width: 1%;
-        left: 41vw;
-        bottom: 1rem;
-    }
-
-    .line_seg2 {
-        width: 1%;
-        height: 57vh;
-        background-color: black;
-        left: 41vw;
-    }
-    .text  {
-        line-height:1;
-        padding-left:1rem;
-    }
-
-    .text2 {
-        transform: translate(5px,-8px);font-size: 19pt; font-family: 'AtkinsonBold';font-weight: 900;
-        padding-right:1rem;
-    }
-    
-    .component_p {
-        text-align:center;
-    }
-    
-    #right_p {
-        float:none;
-    }
-    
-    #pow_id {
-        height: 41vh;
-            background-color: black;
-            width: 1%;
-            left: 41vw;
-    }
-    
-    .project_list {
-        width: 80%;
-        font-size:22pt;
-    }
-    
-    h2 {
-        font-size:18pt;
-    }
-}
-
-@media screen and (max-width: 1076px) {
-    #mobile_btn_m {
-        display: block;
-    }
-    #landing_mob {
-        display: block;
-    }
-    
-    #landing {
-        background-image: url(../images/landing_mob.svg);
-        padding: 0% 10% 47% 10%;
-    }
-}
-
-.inner_layer {
-    background-color: rgba(0,0,0,0.5);
-width: 100%;
-height: 100%;
-position: fixed;
-}
-
-footer {
-    text-align:center;
-}
-.information {
-    border-radius: 30px;
-    overflow: scroll;
-    z-index: 1000;
-    position: fixed;
-    background-color: rgba(255,255,255,1);
-    margin: 3rem;
-    padding: 10px;
-    height: 90%;
-    animation-name: open2;
-    animation-duration: 1s;
-    animation-direction: normal;
-}
-
-@keyframes open2 {
-    from {
-        height:0%;
-    }
-
-    to {
-        height:90%;
-    }
-}
-/* To avoid merge conflicts, touch only your assigned section.*/
-/* Also make custom class names/tag/ids unique. */
-
-/* Styles for each section 1*/
-
-
-/* Ticket Module (Section 1 - Stin)*/
-
-.ticket_main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    text-align: center;
-    width: 500px;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    margin-left: 20%;
-    margin-top: 1%;
-}
-
-.ticket_subsection {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 50%;
-}
-
-.button_ticket {
-    font-family: 'raleway', 'sans-serif';
-    font-weight: bold;
-
-
-    background-color: #A17C3F;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    padding: 4% 30%;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    font-size: 10pt;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10px;
-}
-
-    .button_ticket:hover {
-        background-color: #b1986e;
-    }
-
-.ticket_main h2 {
-    font-family: 'raleway', 'sans-serif';
-    color: white;
-    font-size: 11pt;
-}
-
-.ticket_main h1 {
-    font-family: 'playfair_display';
-    color: white;
-    margin: 50% 0;
-    text-align: center;
-}
-
-/* Media Queries */
-@media screen and (max-width: 60rem) {
-
-    [class*="ticket_main"] {
-        width: 50%;
-        margin: 1.5% auto;
-        flex-direction: column;
-    }
-
-    .ticket_main h1 {
-        margin: 10% 0;
-        text-align: center;
-    }
-
-    .ticket_main h2 {
-        margin: 4%;
-    }
-
-    .ticket_subsection {
-        height: 60%;
-    }
-
-    .button_ticket {
-        padding: 4% 0%;
-        white-space: nowrap;
-        margin: 1% 0;
-    }
+    width:100%
 }
 
 /* End of Stin S1 */
@@ -514,18 +278,24 @@ footer {
     border: none;
     border-radius: 35px;
     transform: translate(0,15%);
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
     color: white;
     text-decoration: none;
     text-align: center;
     align-items: center;
     position:relative;
     z-index: -1;
+    font-size: 1.3vw;
 }
 
-    .button_nav:hover {
-        background-color: #b1986e;
-    }
+.information_scroll {
+    height: 76%;
+    padding: 2rem;
+    overflow:auto;
+}
+.button_nav:hover {
+    background-color: #b1986e;
+}
 
 .front_nav a:hover {
     text-decoration: none;
@@ -659,4 +429,246 @@ a:visited {
     background-color: transparent;
     text-decoration: none;
 }
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 700px) {
+    .experience_list {
+        
+        height: 70rem;
+        display: flex;
+        overflow-x:scroll;
+        overflow-y:clip;
+    }
+    
+    .cell_outer_2 {
+        display:block;
+    }
+    
+    .subdivide_1 {
+        width: 100%;
+    }
+
+    #resp {
+        width:65vw;
+    }
+    
+    .proj_cell {
+        padding-left: 1rem;
+    }
+    
+    .cell_inner {
+        border-radius:30px;
+        padding:10px;
+        text-align:center;
+        width:100%;
+    }
+
+    .cell_outer_1 {
+        padding-right:10px;
+    }
+    
+    .cell_outer_2 {
+        border: 3px solid beige;
+        border-radius: 12px;
+    }
+    
+    
+    .segpart {
+        display:block;
+    }
+
+    .line_seg {
+        height: 41vh;
+        background-color: black;
+        width: 1%;
+        left: 41vw;
+        bottom: 1rem;
+    }
+
+    .line_seg2 {
+        width: 1%;
+        height: 57vh;
+        background-color: black;
+        left: 41vw;
+    }
+    .text  {
+        line-height:1;
+        padding-left:1rem;
+    }
+
+    .text2 {
+        transform: translate(5px,-8px);font-size: 19pt; font-family: 'AtkinsonBold';font-weight: 900;
+        padding-right:1rem;
+    }
+    
+    .component_p {
+        text-align:center;
+    }
+    
+    #right_p {
+        float:none;
+    }
+    
+    #pow_id {
+        height: 41vh;
+            background-color: black;
+            width: 1%;
+            left: 41vw;
+    }
+    
+    .project_list {
+        font-size:22pt;
+    }
+    
+    h2 {
+        font-size:18pt;
+    }
+    
+    .button_nav {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 1076px) {
+    #mobile_btn_m {
+        display: block;
+    }
+    #landing_mob {
+        display: block;
+    }
+    
+    #landing {
+        background-image: url(../images/landing_mob.svg);
+        padding: 0% 10% 47% 10%;
+    }
+}
+
+.inner_layer {
+    background-color: rgba(0,0,0,0.5);
+width: 100%;
+height: 100%;
+position: fixed;
+}
+
+footer {
+    text-align:center;
+}
+.information {
+    border-radius: 30px;
+    overflow:clip;
+    z-index: 1000;
+    position: fixed;
+    background-color: rgba(255,255,255,1);
+    margin: 3rem;
+    padding: 10px;
+    height: 90%;
+    animation-name: open2;
+    animation-duration: 1s;
+    animation-direction: normal;
+}
+
+@keyframes open2 {
+    from {
+        height:0%;
+    }
+
+    to {
+        height:90%;
+    }
+}
+/* To avoid merge conflicts, touch only your assigned section.*/
+/* Also make custom class names/tag/ids unique. */
+
+/* Styles for each section 1*/
+
+
+/* Ticket Module (Section 1 - Stin)*/
+
+.ticket_main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    width: 500px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-top: 1%;
+}
+
+.ticket_subsection {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 50%;
+}
+
+.button_ticket {
+    font-family: 'raleway', 'sans-serif';
+    font-weight: bold;
+
+
+    background-color: #A17C3F;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 4% 30%;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10pt;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+    .button_ticket:hover {
+        background-color: #b1986e;
+    }
+
+.ticket_main h2 {
+    font-family: 'raleway', 'sans-serif';
+    color: white;
+    font-size: 11pt;
+}
+
+.ticket_main h1 {
+    font-family: 'playfair_display';
+    color: white;
+    margin: 50% 0;
+    text-align: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 60rem) {
+
+    [class*="ticket_main"] {
+        width: 50%;
+        margin: 1.5% auto;
+        flex-direction: column;
+    }
+
+    .ticket_main h1 {
+        margin: 10% 0;
+        text-align: center;
+    }
+
+    .ticket_main h2 {
+        margin: 4%;
+    }
+
+    .ticket_subsection {
+        height: 60%;
+    }
+
+    .button_ticket {
+        padding: 4% 0%;
+        white-space: nowrap;
+        margin: 1% 0;
+    }
+}
+
+
 /* End of section */
