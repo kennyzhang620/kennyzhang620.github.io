@@ -108,7 +108,7 @@ function createflair(type, colour) {
 
 function createImage(title, url) {
     const flairHTML = `
-                                        <img src="${url}" alt="${title}">
+                                        <img src="${url}" alt="${title}" style="max-height:none">
 `
     return flairHTML;
 }

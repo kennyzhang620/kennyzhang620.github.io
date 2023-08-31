@@ -524,6 +524,12 @@ a:visited {
         font-size:18pt;
     }
     
+    .image_gallery {
+        max-height:none;
+        display:flex;
+        width:100%;
+        overflow:scroll;
+    }
     .button_nav {
         font-size: 2vw;
     }
