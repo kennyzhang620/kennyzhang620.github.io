@@ -131,6 +131,11 @@ img {
       padding:10px;
 }
 
+#about {
+    background-image: url(../images/about.svg);
+    background-size: contain;
+}
+
 /* Create four equal columns that sits next to each other */
 .column {
   flex: 25%;
@@ -162,25 +167,23 @@ img {
 }
 
 .line_seg {
-    height: 6px;background-color: black;
+    height: 6px;background-color:white;
     position: relative;
 }
 
 .line_seg2 {
-    width: 70%;height: 6px;background-color: black;
+    width: 70%;height: 6px;background-color:white;
     position: relative;
 }
 .text  {
     line-height:2.2;
     position:relative;
-    z-index:-1;
 }
 
 .text2 {
     transform: translate(5px,-8px);font-size: 19pt; font-family: 'AtkinsonBold';font-weight: 900;
     padding-right:1rem;
     position:relative;
-    z-index:-1;
 }
 .proj_cell {
         text-align: center;
@@ -212,8 +215,9 @@ img {
 #landing {
 
     padding: 0% 10% 30% 10%;
-    background-image: url(../images/landing.svg);
+    background-image: url(../images/landing.png);
     background-size:contain;
+    color:white;
 }
 
 #right_p {
@@ -288,8 +292,12 @@ img {
     font-size: 1.3vw;
 }
 
+#btn {
+    width: 25vw;
+}
+
 .information_scroll {
-    height: 76%;
+    height: 78%;
     padding: 2rem;
     overflow:auto;
 }
@@ -439,8 +447,10 @@ a:visited {
         overflow-x:scroll;
         overflow-y:clip;
     }
-    
-    .cell_outer_2 {
+    .information_scroll {
+        height:72%;
+    }
+     .cell_outer_2 {
         display:block;
     }
     
@@ -463,6 +473,9 @@ a:visited {
         width:100%;
     }
 
+    #btn {
+        width: 60vw;
+    }
     .cell_outer_1 {
         padding-right:10px;
     }
@@ -479,7 +492,6 @@ a:visited {
 
     .line_seg {
         height: 41vh;
-        background-color: black;
         width: 1%;
         left: 41vw;
         bottom: 1rem;
@@ -488,7 +500,6 @@ a:visited {
     .line_seg2 {
         width: 1%;
         height: 57vh;
-        background-color: black;
         left: 41vw;
     }
     .text  {
@@ -544,7 +555,6 @@ a:visited {
     }
     
     #landing {
-        background-image: url(../images/landing_mob.svg);
         padding: 0% 10% 47% 10%;
     }
 }

@@ -108,7 +108,7 @@ function createflair(type, colour) {
 
 function createImage(title, url) {
     const flairHTML = `
-                                        <img src="${url}" alt="${title}" style="max-height:none">
+                                        <img src="${url}" alt="${title}" style="max-height:21rem;">
 `
     return flairHTML;
 }
@@ -134,7 +134,7 @@ function clearElements(classL) {
 
 function generateBtn(url) {
     const htmlL = `<a href="${url}">
-                <div id='btn' class="button button_nav"style="width:25vw; text-align:center;">
+                <div id='btn' class="button button_nav"style="text-align:center;">
                         Go to Project!
                 </div>
                 </a>`
