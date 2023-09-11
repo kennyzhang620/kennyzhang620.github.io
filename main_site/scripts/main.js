@@ -180,6 +180,7 @@ function createCellProj(proj, dataset, ind) {
                         </div>
                     <h2 style="text-align:center;">${proj.name}</h2>
                     ${flairs}
+                    <h3>${proj['short-body']}</h3>
                     </div>`
     
     return HTMLL;
