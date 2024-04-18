@@ -1,0 +1,1134 @@
+/* Global group-agreed styles. DO NOT TOUCH THIS SECTION AS IT WILL RESULT IN MERGE CONFLICTS */
+
+html {
+    
+}
+header {
+
+}
+
+body {
+ background-color: black;
+}
+
+h1 {
+
+}
+
+
+h2{
+
+}
+
+nav {
+
+}
+
+p {
+
+}
+
+footer {
+
+}
+
+/* To avoid merge conflicts, touch only your assigned section.*/
+/* Also make custom class names/tag/ids unique. */
+
+/* Styles for each section 1*/
+
+
+/* Ticket Module (Section 1 - Stin)*/
+
+.ticket_main{
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align:center;
+
+    width:500px;
+    height:200px;
+    background-color:rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+
+    margin-left:20%;
+    margin-top:1%;
+}
+
+.ticket_subsection{
+
+    display:flex;
+    flex-direction: column;
+
+    width:70%;
+    height:50%;
+}
+
+.button_ticket{
+    background-color: #A17C3F; 
+    color: white;
+
+    border-radius: 10px;
+    border: none;
+    padding: 4% 30%;
+    display: inline-block;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+
+    margin-right:auto;
+    margin-left:auto;
+    margin-top:10px;
+
+}
+
+.button_ticket:hover{
+    background-color: #b1986e; 
+
+}
+
+.ticket_main h2{
+    color: white;
+    font-size:11pt;
+}
+
+.ticket_main h1{
+    color: white;
+    margin: 50% 0;
+    
+    text-align:center;
+    }
+
+/* Media Queries */
+@media screen and (max-width: 60rem){
+    
+    [class*="ticket_main"] {
+        width: 50%;
+        margin: 1.5% auto;
+        flex-direction: column;
+      }
+
+      .ticket_main h1{
+        margin: 10% 0;
+        text-align:center;
+        }
+
+        .ticket_main h2{
+            margin:4%;
+        }
+
+        .ticket_subsection{
+            height:60%;
+        }
+
+        .button_ticket{
+            padding: 4% 0%;    
+            white-space: nowrap;
+            margin: 1% 0;
+        }
+        
+    }
+
+/* Media Queries */
+@media screen and (max-width: 60rem){
+    
+    [class*="ticket_main"] {
+        width: 50%;
+        margin: 1.5% auto;
+        flex-direction: column;
+      }
+
+      .ticket_main h1{
+        margin: 10% 0;
+        text-align:center;
+        }
+
+        .ticket_main h2{
+            margin:4%;
+        }
+
+        .ticket_subsection{
+            height:60%;
+        }
+
+        .button_ticket{
+            padding: 4% 0%;    
+            white-space: nowrap;
+            margin: 1% 0;
+        }
+        
+    }
+
+/* End of Stin S1 */
+
+.site_part1 {
+    background-image: url(../images/main_img.png);
+    background-size:cover;
+    /*height:100vh;*/
+}
+
+.logo_header {
+    width: 100%;
+    height: 87%;
+    text-align: center;
+    padding: 42px 20px 20px;
+}
+
+.logo_vso {
+    width: 106%;
+    height: 15%;
+    text-align: center;
+    display: block;
+}
+
+.title {
+    width: 64%;
+    height: 40%;
+    text-align: center;
+}
+
+/* Nav bar stuff ~ Stin */
+
+.front_nav {
+    
+    width:80%;
+    
+    border-radius: 40px 40px 0 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    /* Center the nav */
+    text-align: center;
+    align-items: center;
+    bottom:0;
+    left:50%;
+    transform: translate(-50%, 0);
+    position: fixed;
+}
+
+
+.button_nav{
+    margin: 0;
+    
+    background-color: #A17C3F; 
+    border: none;
+    border-radius:35px;
+    
+    transform:translate(0,15%);
+
+    padding: 1rem 4rem;
+    color: white;
+    text-decoration: none;
+    text-align:center;
+}
+
+.button_nav:hover{
+    background-color: #b1986e;
+}
+
+.front_nav a:hover {
+    text-decoration-color: rgba(255, 255, 255, 1);    
+}
+
+.front_nav a:active {
+    outline: 0;
+}
+
+.front_nav a {
+    color: inherit;
+    text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+    transition: text-decoration-color 300ms;
+}
+
+@font-face {
+    font-family: 'raleway';
+    src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
+}
+
+#img_nav {
+    width: 9vw;
+    padding-right:12%;
+}
+
+.img_button_nav {
+    width: 50px;
+    padding-right:.5rem;
+}
+
+.selectors {
+    font-family: 'raleway', sans-serif;
+    display: inline-block;
+
+    /* top | right | bottom | left */
+    padding: 1vw 12% 1vw 0;
+}
+
+.selectors_m {
+    font-family: 'raleway', sans-serif;
+    /* top | right | bottom | left */
+    transform:scale(-1,1);
+    font-weight:700;
+    padding-top:3vw;
+    padding-bottom:3vw;
+}
+
+
+.mobile_nav {
+    position: fixed;
+    float: right;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform:scale(-1,1);
+}
+
+.mobile_nav_o {
+    width: 0%;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    animation-name:open;
+    animation-duration:1s;
+    animation-direction:normal;
+    animation-play-state:paused;
+    z-index: 1;
+}
+
+.navigation_vert {
+    text-align:center;
+}
+
+.nav_button_mob {
+    width: 50px;
+    padding-right: .5rem;
+}
+
+.button_mobi {
+    transform:scale(-1,1);
+
+}
+
+@keyframes open {
+    from {
+        width:0%;
+    }
+
+    to {
+        width:100%;
+    }
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+/* End of section */
+
+
+
+
+/* Styles for each section 2*/
+
+@font-face {
+    font-family: 'playfair_display';
+    src: url(../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+.paragraphs {
+    font-size: 11pt;
+    font-weight:300;
+    padding: 10px;
+    font-family: 'raleway', 'sans-serif';
+}
+
+.subsection_main {
+    background-color: black;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.site_part2 {
+
+}
+
+.pipe_1 {
+    width: 15%;
+    height: 50%;
+}
+
+.subsection {
+    padding: 10%;
+    width: 65%;
+}
+
+.subsection2 {
+    padding-top: 15%;
+}
+
+#header_l {
+    font-size:20pt;
+}
+
+.information_row {
+    font-family: 'raleway', 'sans-serif';
+    display: flex;
+    font-size: 9pt;
+    font-weight: 600;
+    padding-left: 18px;
+    padding-top: 5px;
+}
+
+.icons {
+    width:10%;
+    height:10%;
+}
+
+.program_info {
+    width: 78%;
+    height: 78%;
+    font-family: 'playfair_display', 'serif';
+    font-size: 3em;
+    font-weight:600;
+    color: white;
+}
+
+.overview_img {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    background-size:cover;
+    border-radius: 10px;
+    background-image: url(../images/overview_img.png);
+}
+#header_p {
+    padding-top: 20px;
+}
+
+.footer_2 {
+    width: 100%;
+}
+
+/* End of section*/
+
+
+
+
+/* Styles for each section 3*/
+
+.site_part3 {
+}
+
+/* End of section*/
+
+
+
+
+/* Styles for each section 4*/
+
+.site_part4 {
+    color: white;
+    margin-left: 10%;
+    white-space: nowrap;
+}
+.mainBackground{
+    background-image:url("../images/outer box for tracks.png");
+    background-repeat: no-repeat;
+    background-size: 80% 100%;
+}
+.musicTrack{
+    margin-left: 2%;
+    font-family: 'rale-way';
+    font-size: 20px;
+    width: 60%;
+    margin-bottom: 5%;
+}
+.musicTrack .bottom td{
+    padding-bottom: 20px;
+}
+.musicH1{
+    font-family: 'rale-way';
+    font-weight: bold;
+    font-size: 75px;
+}
+.musicH2{
+    font-family: 'sans-serif';
+    margin-left: 2%;
+    font-style: normal;
+    font-size: 36px;
+}
+.musicDisplayInfo span{
+    display: flex;
+}
+#musicName{
+    font-family: 'rale-way';
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+#musicAuthor{
+    font-family: 'sans-serif';
+    font-size: 25px;
+    color: #B38C4A;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+#musicTime{
+    font-family: 'sans-serif';
+    font-size: 25px;
+    margin-left: 80%;
+    position: relative;
+    margin-top: -4%;
+}
+.musicDisplay{
+    display: flex;
+}
+.musicDisplayInfo{
+    background: rgba(0, 0, 0, 0.9);
+    margin-top: 1%;
+    margin-left: 2%;
+    width: 50%;
+    border-radius: 20px;
+}
+.musicControl{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: #A17C3F;
+    margin-left: 5%;
+    margin-top: 4%;
+    border-radius: 20px;
+    height: 60px;
+}
+.musicControl span{
+    transition: all 0.4s;
+    cursor: pointer;
+    width: 80px;
+}
+.pipe{
+    margin-top: 8%;
+    margin-left: 2.9%;
+    position: absolute;
+    width: 18%;
+}
+/* End of section*/
+
+
+
+/* Styles for each section 5*/
+
+.site_part5 { /* Edited by Stin */
+    display:flex;
+    flex-direction: row;
+}
+
+    .subsection_orchestra{
+
+        /* FLEX STUFF */
+        display:flex;
+
+        flex-direction: row;
+
+        justify-content: left;
+        align-items: left;
+        text-align:left;
+
+        /* margin-top: 10%; */
+        background-color: black;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        /* shorthand for grow, shrink, and basis */
+        /* flex: 1 1 auto; */
+        flex-wrap: wrap;
+        justify-content: left;
+        padding-left: 6rem;
+        overflow: visible;
+
+        overflow: hidden;
+    }
+
+    .left-pipe{
+        display: inline-block;
+        /* grid-column-start: 0; */
+        overflow: visible;
+        width: 30%;
+    }
+
+    .left-orchestra-pipes{
+        /* width: 30%; */
+    }
+
+    .orchestra-info{
+        display: inline-block;
+	    /* flex: 7 7 auto; */
+        color: white;
+        /* padding-left: 10rem; */
+        padding-left: 8%;
+        /* padding-bottom: 100px; */
+    }
+
+    .s5-header{
+        /* position: absolute; */
+        /* display: inline-block; */
+
+        /* try grid */
+        display: grid;
+        grid-template-columns: [first] 10% [line2] 10% [line3] 10% [line4] 10% [line5] 10% [line5] 10% [line7] 10% [line8] 10%;
+        /* grid-template-rows: [row1-start] 10% [row1-end] 10% [line3] 10% [last-line] 10%; */
+        /* grid-template-rows: [row1-start] 10% [row1-end] 10% [line3] 10%; */
+        width: 100%;
+    }
+
+    .orch-remy{
+        /* OPTION 1 */
+        /* margin-top: 7%;
+        width: 21%;
+        height: auto; */
+
+        /* OPTION 2 */
+        /* width: 25%; */
+        /* height: auto; */
+
+        grid-column-start: 2;
+        grid-row-start: 2;
+        /* padding-top: 25%; */
+    }
+
+    .right-orch-pipes{
+        /* grid-column-start: 1; */
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        overflow: hidden;
+    }
+
+    .right-orch-mobile-pipes{
+        display: none;
+    }
+
+    /* the word orchestra */
+    .o-heading{
+        /* position: absolute; */
+        grid-column-start: 3;
+        /* margin-left: 50%; */
+        grid-row-start: 2;
+        /* margin-top: 25%; */
+        padding-top: 250%;
+        margin-left: 60%;
+    }
+
+    #header_orchestra{
+        font-family: 'playfair_display', 'serif';
+        font-size: 4vw;
+    }
+
+    .filteredList{
+        margin-top: 5%;
+
+        grid-column-end: 8;
+    }
+
+    .filter-option{
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-radius: 24px;
+        margin-right: 5%;
+
+        grid-column-end: 8;
+    }
+
+    /* when clicked */
+    .filter-option:focus{
+        .oven-knob{
+            transition-duration: 0.5s;
+            transform: rotate(90deg);
+            margin-top: 10%;
+        }
+    }
+
+    button[data-filter="Strings"]:focus ~ div:not([class*="Strings"]){
+        display:none;
+    }
+    button[data-filter="Maestros"]:focus ~ div:not([class*="Maestros"]){
+        display:none;
+    }
+    button[data-filter="Woodwinds"]:focus ~ div:not([class*="Woodwinds"]){
+        display:none;
+    }
+    button[data-filter="Brass"]:focus ~ div:not([class*="Brass"]){
+        display:none;
+    }
+    button[data-filter="Percussion"]:focus ~ div:not([class*="Percussion"]){
+        display:none;
+    }
+
+    /* .left-pipe{
+        display: flex;
+        width: 10%;
+    } */
+
+    .left-orchestra-pipes{
+        width: 70%;
+        margin-left: 3vw;
+    }
+
+    .s5-header{
+        /* position: absolute; */
+        /* display: inline-block; */
+
+        /* try grid */
+        display: grid;
+        /* WORKS but may not use:::::::::::: */
+        /* grid-template-columns: [first] 10% [line2] 10% [line3] 10% [line4] 10% [line5] 10% [line5] 10% [line7] 10% [line8] 10%; */
+
+        /* this is actually better lol i love using vw <3 */
+        grid-template-columns: [first] 10vw [line2] 10vw [line3] 10vw [line4] 10vw [line5] 10vw [line5] 10vw [line7] 10vw [line8] 10vw;
+
+
+
+        width: 100%;
+    }
+
+    /* the word orchestra */
+    #header_orchestra{
+        font-family: 'playfair_display', 'serif';
+        font-size: 4vw;
+        /* grid-column-start: 5; */
+        grid-row-start: 2; 
+        /* margin-top: 17vw; */
+
+        margin-left: 42vw;
+        margin-top: 17vw;
+        /* margin-top: 220%; */
+
+    }
+
+    .orch-remy{
+
+        grid-column-start: 4;
+        grid-row-start: 2;
+
+        width: 18vw;
+    }
+
+    .right-orch-pipes{
+        grid-column-end: 5;
+        grid-row-end: 3;
+        overflow: hidden;
+        width: 70vw;
+    }
+
+    .right-orch-mobile-pipes{
+        display: none;
+    }
+
+    .orchestra_info{ /* Edited by Stin */
+        display:flex;
+        flex-direction: column;
+
+        align-items: left;
+        justify-content: left;
+        text-align: left;
+    
+        color: white;
+
+        margin-top: 5%;
+        
+    }
+
+/* Stin Tab Stuff */
+/* Source for Tabs: https://alvarotrigo.com/blog/html-css-tabs/ - #10 */
+
+.oven-knob{
+    width: 1vw;
+    height: 1vw;
+}
+
+.tab{
+    background: transparent;
+}
+
+.tabs {
+    margin-top: 5%;
+    margin-left: 15vw;
+
+    display: flex;
+    flex-wrap: wrap;
+    background: transparent;
+
+    height:20%;
+    width:80%;
+  }
+
+  .tabs label {
+    order: 1; 
+    display: block;
+    padding: 1rem 2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+    background: transparent;
+    font-weight: bold;
+    /* transition: background ease 0.2s; */
+  }
+  .tabs .tab {
+    box-sizing: border-box;
+    order: 99; 
+
+    flex-grow: 1;
+
+    width: 100%;
+    display: none;
+    padding: 1rem;
+  }
+
+  /* when a tab is not pressed, it's content is hidden */
+  .tabs input[type="radio"] {
+    display: none;
+  }
+
+  /* WHEN THE TAB IS PRESSED, the label does this!! */
+  .tabs input[type="radio"]:checked + label {
+    .oven-knob{
+        width: 1vw;
+        height: 1vw;
+        transition-duration: 0.5s;
+        transform: rotate(90deg);
+    }
+  }
+
+  /* when a tab is pressed, the tab content shows */
+  .tabs input[type="radio"]:checked + label + .tab {
+    display: block;
+  }
+
+      .lines{
+        /* padding-left: 3em; */
+        padding-left: 1.5em;
+        height: 2em;
+
+  /* literally dont know LOL */
+  @media (max-width: 20rem) {
+    
+    .tabs {
+        background: cover;
+        flex-wrap: nowrap;
+        width:100%;
+      }
+    
+    .tabs .tab{
+        padding: 0%;
+      }
+
+      .tabs label {
+        padding: 0rem 0rem;
+        margin-right: 0.2rem;    
+      }
+
+
+    .tabs label {
+      width: 100%;
+      margin-right: 0;
+      margin-top: 0.2rem;
+    }
+  }
+  
+      /* orchestra profiles */
+
+      .orchestra-profiles{
+        padding-top: 10%;
+        margin-right: 5%;
+      }
+
+      .tablinks{
+        /* margin-right: 20px;
+        position: relative;
+        top: 0;
+        cursor: pointer;
+        color: #333;
+        text-transform: uppercase; */
+      }
+
+      .tab-names{
+        font-family: 'raleway', sans-serif;
+        font-size: 10vw;
+        font-weight: bold;
+      }
+
+      .tabcontent{
+        float: left;
+      }
+
+      .profiles-grid{
+        display: grid;
+        /* 6 profiles on each column!! */
+        /* grid-template-columns: 0.85fr 0.85fr 0.85fr 0.85fr 0.85fr 0.85fr; */
+
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        margin-top: 5%;
+
+        /* position: absolute;
+        transition: opacity .2s cubic-bezier(.42, 0, .34, 1.01);
+        opacity: 0; */
+      }
+
+      .profiles{
+        text-align: left;
+        /* padding-bottom: 5em; */
+        margin-bottom: 35%;
+      }
+
+      .profile-pics{
+        /* width: 150px;
+        height: auto; */
+        width: 80%;
+      }
+
+      .profile-names{
+        font-family: 'PT Serif', 'serif';
+        font-size: 1.4vw;
+        padding-top: 1rem;
+      }
+
+      .profile-instrument-names{
+        font-family: 'raleway', sans-serif;
+        /* font-size: 1.5rem; */
+        margin-top: 1%;
+        /* font-size: 10pt; */
+        font-size: 1vw;
+        font-weight: bold;
+      }
+
+/* ----------------------------------MEDIA QUERIES---------------------------------- */
+
+    @media screen and (max-width: 60rem){
+        .right-orch-pipes{
+            display: none;
+        }
+
+        .left-orchestra-pipes{
+            display: none;
+        }
+        .right-orch-mobile-pipes{
+            display: inline;
+            
+            grid-column-start: 1;
+            grid-column-end: 7;
+            /* grid-column-end: auto; */
+            grid-row-start: 1;
+            grid-row-end: 3;
+            width: 150%;
+        }
+
+        .orch-remy{
+            width: 240%;
+        }
+
+        .o-heading{
+            margin-bottom: 40%;
+        }
+
+
+        .right-orch-mobile-pipes{
+            display: inline;
+            grid-column-end: 4;
+            margin-top: -5vw;
+
+            width: 70vw;
+        }
+
+        .orch-remy{
+            width: 240%;
+            margin-top: -35vw;
+        }
+
+        #header_orchestra{
+            font-family: 'playfair_display', 'serif';
+            font-size: 4vw;
+
+            margin-left: 42vw;
+            margin-top: -10vw;
+        }
+
+        .tabs input[type="radio"]:checked + label {
+            background: #313353;
+          }
+
+        .profiles-grid{
+            /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+            overflow: auto;
+            white-space: nowrap;
+            overflow-x: auto;
+
+            /* testing */
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+        
+
+        .oven-knob{
+            display: none;
+        }
+
+        .profiles{
+            text-align: center;
+            /* grid-row: 1 / span 2; */
+            border-radius: 12px;
+            padding: 6px;
+            margin-right: 5px;
+
+            /* gradient */
+            background: rgb(141,143,175);
+            background: linear-gradient(rgba(141,143,175,1) 0%, rgba(34,33,35,1) 80%);
+        }
+
+        .profile-pics{
+            /* make the profile pictures smaller */
+            width: 50px;
+            /* with the %, the profile pictures arent the same size, but the px makes them all consistant */
+            /* width: 90%; */
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .profile-names{
+            font-family: 'PT Serif', 'serif';
+            /* font-size: 2rem; */
+            font-size: 6pt;
+            padding-top: 1rem;
+        }
+
+        .profile-instrument-names{
+            font-family: 'raleway', sans-serif;
+            /* font-size: 1.5rem; */
+            margin-top: 1%;
+            font-size: 7pt;
+            font-weight: bold;
+          }
+    }
+
+
+
+
+/* End of section*/
+
+
+
+/* Styles for each section 6*/
+
+.site_part6 {
+}
+
+.faq_container {
+    text-align:left;
+    padding: 0 0 0 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+  
+    /* Rat Image */
+    background-position: left;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-image: url(../images/faq_rat.png);
+} 
+
+/* Style for the FAQ */
+details {    
+    width:80%;
+    margin-top:25px;
+    text-align:left;
+    border-radius: 4px;
+
+    padding: 1em 0;
+
+
+    color: #B38C4A; 
+}
+
+summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+}
+
+/* hide html style by default */
+summary {list-style: none}
+summary::-webkit-details-marker {display: none; }
+
+/* This is for the little "twisty" before the question */
+details summary::before { 
+    content:"> "; 
+    color: #B38C4A; 
+  }
+  
+  details[open] summary::before { 
+    content:"∨ "; 
+  }
+  
+/* What happens to the text when its opened */
+details[open] {
+}
+
+details[open] summary {
+    margin-bottom: 0.5em;
+}
+
+/* Media Queries for FAQ */
+@media screen and (max-width: 60rem){
+    summary {
+        margin: 0 0;
+        padding: 0em;
+    }
+
+    details {    
+        width:80%;
+        margin-top:1.5vw;
+        text-align:center;
+        padding: 0 0 0 0;
+    
+        color: #B38C4A; 
+    }
+
+    .faq_container {
+        text-align:center;
+        align-items: center;
+
+        padding-top:0;
+        padding: 0 0 0 0;
+
+        /* Rat Image */
+        background-position: center;
+        background-color:rgba(0, 0, 0, 0.5);
+        background-size: 50%;
+    } 
+}
+/* End of section*/
+
+/* Styles for footer */
+.footer{
+    
+}

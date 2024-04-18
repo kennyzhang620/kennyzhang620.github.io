@@ -1,0 +1,261 @@
+@font-face {
+    font-family: 'raleway';
+    src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'playfair_display';
+    src: url(../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+/* Section 5: Orchestra */
+.site_part5 {
+    display: flex;
+    flex-direction: row;
+}
+
+.subsection_orchestra {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    text-align: left;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.left-pipe{
+        display: flex;
+        width: 10%;
+    }
+
+.left-orchestra-pipes {
+    width: 70%;
+    margin-left: 3vw;
+}
+
+.s5-header {
+    grid-template-columns: [first] 10vw [line2] 10vw [line3] 10vw [line4] 10vw [line5] 10vw [line5] 10vw [line7] 10vw [line8] 10vw;
+    width: 100%;
+}
+
+/* the word orchestra */
+#header_orchestra {
+    font-family: 'playfair_display', 'serif';
+    font-size: 3em;
+    font-weight: 600;
+
+    grid-row-start: 2;
+    margin-left: 42vw;
+    margin-top: -18vw;
+}
+
+.orch-remy {
+    width: 18vw;
+    margin-left: 30vw;
+    margin-top: -47vw;
+}
+
+.right-orch-pipes {
+    margin-left: 30vw;
+    grid-row-end: 3;
+    overflow: hidden;
+    width: 70vw;
+    padding-bottom: 10%;
+
+}
+
+.right-orch-mobile-pipes {
+    display: none;
+}
+
+.orchestra_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    color: white;
+    margin-top: 5%;
+}
+
+.oven-knob {
+    width: 1.5vw;
+    height: auto;
+}
+
+.tab {
+    background: transparent;
+}
+
+.tabs {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    margin-left: 15vw;
+    display: flex;
+    flex-wrap: wrap;
+    background: transparent;
+    height: 20%;
+    width: 80%;
+}
+
+    .tabs label {
+        font-family: 'raleway', sans-serif;
+        order: 1;
+        display: block;
+        padding: 1rem 2rem;
+        margin-right: 0.2rem;
+        cursor: pointer;
+        background: transparent;
+        font-weight: bold;
+    }
+
+    .tabs .tab {
+        box-sizing: border-box;
+        order: 99;
+        flex-grow: 1;
+        width: 100%;
+        display: none;
+        padding: 1rem;
+    }
+
+    .tabs input[type="radio"] {
+        display: none;
+    }
+
+        .tabs input[type="radio"]:checked + label {
+            .oven-knob{
+                width: 1.5vw;
+                height: auto;
+                transition-duration: 0.5s;
+                transform: rotate(90deg);
+            }
+
+}
+
+.tabs input[type="radio"]:checked + label + .tab {
+    display: block;
+}
+
+/* orchestra profiles */
+.orchestra-profiles {
+    padding-top: 10%;
+    margin-right: 5%;
+}
+
+.tab-names {
+    font-family: 'raleway', sans-serif;
+    font-size: 10vw;
+    font-weight: bold;
+}
+
+.tabcontent {
+    float: left;
+}
+
+.profiles-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 5%;
+}
+
+.profiles {
+    text-align: left;
+    margin-bottom: 35%;
+}
+
+.profile-pics {
+    width: 80%;
+}
+
+.profile-names {
+    font-family: 'playfair_display', 'serif';
+    font-size: 1.4vw;
+    padding-top: 1rem;
+}
+
+.profile-instrument-names {
+    font-family: 'raleway', sans-serif;
+    margin-top: 1%;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+
+/* ----------------------------------MEDIA QUERIES---------------------------------- */
+
+@media screen and (max-width: 60rem) {
+    .right-orch-pipes {
+        display: none;
+    }
+
+    .left-orchestra-pipes {
+        display: none;
+    }
+
+    .right-orch-mobile-pipes {
+        display: inline;
+        margin-left: 30vw;
+        margin-top: -9vw;
+        width: 50vw;
+    }
+
+    .orch-remy {
+        width: 30%;
+        margin-top: -40vw;
+        margin-right: 10vw;
+    }
+
+    #header_orchestra {
+        font-family: 'playfair_display', 'serif';
+        font-size: 4vw;
+        margin-left: 45vw;
+        margin-top: -13vw;
+    }
+
+    .tabs input[type="radio"]:checked + label {
+        background: #B38C4A;
+    }
+
+
+    .profiles-grid {
+        overflow: auto;
+        white-space: nowrap;
+        overflow-x: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+
+    .oven-knob {
+        display: none;
+    }
+
+    .profiles {
+        text-align: center;
+        border-radius: 12px;
+        padding: 6px;
+        margin-right: 5px;
+        background: rgb(141,143,175);
+        background: linear-gradient(rgba(141,143,175,1) 0%, rgba(34,33,35,1) 80%);
+    }
+
+    .profile-pics {
+        width: 50px;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .profile-names {
+        font-family: 'playfair_display', 'serif';
+        font-size: 6pt;
+        padding-top: 1rem;
+    }
+
+    .profile-instrument-names {
+        font-family: 'raleway', sans-serif;
+        margin-top: 1%;
+        font-size: 7pt;
+        font-weight: bold;
+    }
+}
