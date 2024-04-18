@@ -260,7 +260,9 @@ function createCellProj(proj, dataset, ind) {
                         <div class="cell_inner" style="width: 100%;">
                     <img src="${proj.img_url}" style="width: 16vw; max-height: 100%;"alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
                         </div>
-                    <h2 style="text-align:center;">${proj.name}</h2>
+                    <h2 style="text-align: center;
+                    color: blue;
+                    font-weight: 800;" onclick="set_load(${dataset}[${ind}])"><u>${proj.name}</u></h2>
                     ${flairs}
                     <h3>${proj['short-body']}</h3>
                     </div>`

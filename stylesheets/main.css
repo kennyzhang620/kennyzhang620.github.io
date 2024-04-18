@@ -243,6 +243,12 @@ img {
     width:100%
 }
 
+#button_back {
+    float: right;
+    transform: translate(60%, -212%);
+    font-size: 20pt;
+}
+
 /* End of Stin S1 */
 
 .site_part1 {
@@ -314,6 +320,7 @@ img {
 .information_scroll {
     height: 78%;
     padding: 2rem;
+    padding-top: 0;
     overflow:auto;
 }
 .button_nav:hover {
@@ -461,13 +468,10 @@ a:visited {
     }
 
     .experience_list {
-        height: 99rem;
         display: block;
-        overflow-x: scroll;
-        overflow-y: scroll;
     }
     .information_scroll {
-        height:72%;
+        height:68%;
     }
      .cell_outer_2 {
         display:block;
@@ -495,6 +499,7 @@ a:visited {
     #btn {
         width: 60vw;
     }
+
     .cell_outer_1 {
         padding:10px;
     }
