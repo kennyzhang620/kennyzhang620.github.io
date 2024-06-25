@@ -497,7 +497,7 @@ function loadContents(eind, vind, aind, pind, splm, red) {
         "redact": red,
     }
 
-    sendPacket("https://portfolio-backend-1-049baa667f08.herokuapp.com/portfoliodata", "POST", newEntry, true, loadSuccess, null);
+    sendPacket("http://localhost:5010/portfoliodata", "POST", newEntry, true, loadSuccess, null);
 }
 
 window.addEventListener('resize', switchModesAuto(window.innerWidth, window.innerHeight), false);
@@ -532,6 +532,6 @@ document.addEventListener('scroll', () => {
 
 
 //End of Section
-loadContents(0,0,0,0,-1,false)
+loadContents(0,0,0,0,3,false)
 //load_projects(project, 'projects')
 //load_jobs(jobdata, 'jobdata')

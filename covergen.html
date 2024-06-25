@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>testpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <body onresize="">
+        <form action="https://portfolio-backend-res-1-d45b95981d24.herokuapp.com/cover" method="post">
+          <p><label for="addresse">Person to be addressed</label></p>
+          <input type="text" name="addresse">
+          <p><label for="address">Address</label></p>
+          <textarea id="address" name="address" rows="3" cols="25"></textarea>
+          <p><label for="subject">Subject</label></p>
+          <input type="text" name="subject" text="Re:">
+          <p><label for="contents">Cover Letter Contents</label></p>
+          <textarea id="contents" name="contents" rows="50" cols="100"></textarea>
+          <br>
+          <input type="submit" value="Submit">
+        </form>
+        
+        <p>Click the "Submit" button and the cover letter shall be generated!</p>
+    </body>
+</html>
