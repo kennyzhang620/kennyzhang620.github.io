@@ -532,6 +532,6 @@ document.addEventListener('scroll', () => {
 
 
 //End of Section
-loadContents(0,0,0,0,3,false)
+loadContents(0,0,0,0,4,false)
 //load_projects(project, 'projects')
 //load_jobs(jobdata, 'jobdata')
