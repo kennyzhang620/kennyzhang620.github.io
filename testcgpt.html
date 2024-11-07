@@ -10,7 +10,7 @@
   <p>Position: <span id="position"></span></p>
 
   <script>
-        DeviceOrientationEvent.requestPermission();
+
     // Variables to store position and velocity
     let posX = 0, posY = 0, posZ = 0;
     let velocityX = 0, velocityY = 0, velocityZ = 0;
@@ -58,12 +58,15 @@
       lastTime = currentTime;
     }
 
-    // Start tracking
-    if (window.DeviceMotionEvent) {
-      window.addEventListener('devicemotion', handleMotion);
-    } else {
-      alert("DeviceMotionEvent is not supported on this device.");
-    }
+    DeviceOrientationEvent.requestPermission()
+                .then((response) => {
+                    if (response === "granted") {
+                        window.addEventListener('devicemotion', handleMotion);
+                    } else {
+                        alert("has to be allowed!");
+                    }
+                })
+                .catch(() => alert("not supported"));
   </script>
 </body>
 </html>
