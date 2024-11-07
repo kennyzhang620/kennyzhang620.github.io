@@ -1,72 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accelerometer Location Tracking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Device Scanner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        ul {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Tracking User Location Relative to Start</h1>
-  <p>Position: <span id="position"></span></p>
+    <h1>Scan for Bluetooth Devices</h1>
+    <button id="scanButton">Scan for Devices</button>
+    <ul id="deviceList"></ul>
 
-  <script>
+    <script>
+        // Get references to the button and list elements
+        const scanButton = document.getElementById('scanButton');
+        const deviceList = document.getElementById('deviceList');
 
-    // Variables to store position and velocity
-    let posX = 0, posY = 0, posZ = 0;
-    let velocityX = 0, velocityY = 0, velocityZ = 0;
+        // Function to start scanning for Bluetooth devices
+        async function scanForDevices() {
+            try {
+                // Request the Bluetooth device
+                const options = {
+                    acceptAllDevices: true,
+                    optionalServices: ['device_information']  // Request RSSI service
+                };
+                
+                const device = await navigator.bluetooth.requestDevice(options);
 
-    // Variables for time tracking
-    let lastTime = Date.now();
+                // Display device info and attempt to retrieve RSSI
+                displayDevice(device);
+                
+                // Connect to the device and read its RSSI value (if supported)
+                const server = await device.gatt.connect();
+                const rssi = await getDeviceRSSI(device);
+                
+                if (rssi !== null) {
+                    addRSSIInfo(device, rssi);
+                } else {
+                    addRSSIInfo(device, 'RSSI not available');
+                }
 
-    // Gravity constant to filter out Earth's gravity (9.81 m/s^2)
-    const gravity = 9.81;
-
-    // Handle motion event for accelerometer data
-    function handleMotion(event) {
-      const currentTime = Date.now();
-      const deltaTime = (currentTime - lastTime) / 1000; // Time in seconds
-
-      // Get accelerometer data (linear acceleration)
-      let accX = event.accelerationIncludingGravity.x || 0;
-      let accY = event.accelerationIncludingGravity.y || 0;
-      let accZ = event.accelerationIncludingGravity.z || 0;
-
-      // Orientation angles (alpha: z-axis, beta: x-axis, gamma: y-axis)
-      let alpha = event.rotationRate.alpha || 0;
-      let beta = event.rotationRate.beta || 0;
-      let gamma = event.rotationRate.gamma || 0;
-
-      // Correct acceleration by filtering out the gravity component
-      accX -= gravity * Math.sin(beta * Math.PI / 180);
-      accY -= gravity * Math.sin(gamma * Math.PI / 180);
-      accZ -= gravity * Math.sin(alpha * Math.PI / 180);
-
-      // Estimate velocity by integrating acceleration (v = v0 + at)
-      velocityX += accX * deltaTime;
-      velocityY += accY * deltaTime;
-      velocityZ += accZ * deltaTime;
-
-      // Estimate position by integrating velocity (s = s0 + vt)
-      posX += velocityX * deltaTime;
-      posY += velocityY * deltaTime;
-      posZ += velocityZ * deltaTime;
-
-      // Update position on the page
-      document.getElementById('position').innerText = `X: ${posX.toFixed(2)}m, Y: ${posY.toFixed(2)}m, Z: ${posZ.toFixed(2)}m`;
-
-      // Update last time
-      lastTime = currentTime;
-    }
-
-    DeviceOrientationEvent.requestPermission()
-        .then((response) => {
-            if (response === "granted") {
-                window.addEventListener('devicemotion', handleMotion);
-            } else {
-                alert("has to be allowed!");
+            } catch (error) {
+                console.error('Error scanning for Bluetooth devices:', error);
             }
-        })
-        .catch(() => alert("not supported"));
-  </script>
+        }
+
+        // Function to display device name and ID
+        function displayDevice(device) {
+            const deviceItem = document.createElement('li');
+            deviceItem.textContent = `Device: ${device.name || 'Unknown'} (ID: ${device.id})`;
+            deviceList.appendChild(deviceItem);
+        }
+
+        // Function to add RSSI info to the list
+        function addRSSIInfo(device, rssi) {
+            const rssiItem = document.createElement('li');
+            rssiItem.textContent = `RSSI: ${rssi}`;
+            deviceList.appendChild(rssiItem);
+        }
+
+        // Function to retrieve the RSSI value (signal strength)
+        async function getDeviceRSSI(device) {
+            try {
+                // Use device's `gatt` server to access RSSI
+                const server = await device.gatt.connect();
+                
+                // Check if the device supports RSSI (not all devices do)
+                if (server.device.rssi) {
+                    return server.device.rssi;  // Return RSSI if available
+                } else {
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error getting RSSI:', error);
+                return null;
+            }
+        }
+
+        // Add event listener to scan button
+        scanButton.addEventListener('click', scanForDevices);
+    </script>
 </body>
 </html>
