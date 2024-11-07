@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accelerometer Location Tracking</title>
+</head>
+<body>
+  <h1>Tracking User Location Relative to Start</h1>
+  <p>Position: <span id="position"></span></p>
+
+  <script>
+    // Variables to store position and velocity
+    let posX = 0, posY = 0, posZ = 0;
+    let velocityX = 0, velocityY = 0, velocityZ = 0;
+
+    // Variables for time tracking
+    let lastTime = Date.now();
+
+    // Gravity constant to filter out Earth's gravity (9.81 m/s^2)
+    const gravity = 9.81;
+
+    // Handle motion event for accelerometer data
+    function handleMotion(event) {
+      const currentTime = Date.now();
+      const deltaTime = (currentTime - lastTime) / 1000; // Time in seconds
+
+      // Get accelerometer data (linear acceleration)
+      let accX = event.accelerationIncludingGravity.x || 0;
+      let accY = event.accelerationIncludingGravity.y || 0;
+      let accZ = event.accelerationIncludingGravity.z || 0;
+
+      // Orientation angles (alpha: z-axis, beta: x-axis, gamma: y-axis)
+      let alpha = event.rotationRate.alpha || 0;
+      let beta = event.rotationRate.beta || 0;
+      let gamma = event.rotationRate.gamma || 0;
+
+      // Correct acceleration by filtering out the gravity component
+      accX -= gravity * Math.sin(beta * Math.PI / 180);
+      accY -= gravity * Math.sin(gamma * Math.PI / 180);
+      accZ -= gravity * Math.sin(alpha * Math.PI / 180);
+
+      // Estimate velocity by integrating acceleration (v = v0 + at)
+      velocityX += accX * deltaTime;
+      velocityY += accY * deltaTime;
+      velocityZ += accZ * deltaTime;
+
+      // Estimate position by integrating velocity (s = s0 + vt)
+      posX += velocityX * deltaTime;
+      posY += velocityY * deltaTime;
+      posZ += velocityZ * deltaTime;
+
+      // Update position on the page
+      document.getElementById('position').innerText = `X: ${posX.toFixed(2)}m, Y: ${posY.toFixed(2)}m, Z: ${posZ.toFixed(2)}m`;
+
+      // Update last time
+      lastTime = currentTime;
+    }
+
+    DeviceOrientationEvent.requestPermission()
+    // Start tracking
+    if (window.DeviceMotionEvent) {
+      window.addEventListener('devicemotion', handleMotion);
+    } else {
+      alert("DeviceMotionEvent is not supported on this device.");
+    }
+  </script>
+</body>
+</html>
