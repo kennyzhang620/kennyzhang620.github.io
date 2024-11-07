@@ -59,14 +59,14 @@
     }
 
     DeviceOrientationEvent.requestPermission()
-                .then((response) => {
-                    if (response === "granted") {
-                        window.addEventListener('devicemotion', handleMotion);
-                    } else {
-                        alert("has to be allowed!");
-                    }
-                })
-                .catch(() => alert("not supported"));
+        .then((response) => {
+            if (response === "granted") {
+                window.addEventListener('devicemotion', handleMotion);
+            } else {
+                alert("has to be allowed!");
+            }
+        })
+        .catch(() => alert("not supported"));
   </script>
 </body>
 </html>
