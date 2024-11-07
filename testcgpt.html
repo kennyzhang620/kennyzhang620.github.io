@@ -10,6 +10,7 @@
   <p>Position: <span id="position"></span></p>
 
   <script>
+        DeviceOrientationEvent.requestPermission();
     // Variables to store position and velocity
     let posX = 0, posY = 0, posZ = 0;
     let velocityX = 0, velocityY = 0, velocityZ = 0;
@@ -57,7 +58,6 @@
       lastTime = currentTime;
     }
 
-    DeviceOrientationEvent.requestPermission()
     // Start tracking
     if (window.DeviceMotionEvent) {
       window.addEventListener('devicemotion', handleMotion);
