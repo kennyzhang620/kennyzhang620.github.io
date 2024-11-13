@@ -258,11 +258,11 @@ function createCellProj(proj, dataset, ind) {
     const HTMLL = `
                     <div class="cell_outer">
                         <div class="cell_inner" style="width: 100%;">
-                    <img src="${proj.img_url}" style="width: 16vw; max-height: 100%;"alt="${proj.name}" onclick="set_load(${dataset}[${ind}])">
+                    <img src="${proj.img_url}" style="width: 16vw; max-height: 100%;"alt="${proj.title}" onclick="set_load(${dataset}[${ind}])">
                         </div>
                     <h2 style="text-align: center;
                     color: blue;
-                    font-weight: 800;" onclick="set_load(${dataset}[${ind}])"><u>${proj.name}</u></h2>
+                    font-weight: 800;" onclick="set_load(${dataset}[${ind}])"><u>${proj.title}</u></h2>
                     ${flairs}
                     <h3>${proj['short-body']}</h3>
                     </div>`
@@ -368,7 +368,7 @@ function load_job_type(type) {
 
 function set_load(proj) {
     console.log(proj);
-    loadInfoPanel(proj.name, proj.flairs, proj.images, proj.videos, proj.body, proj.collabs, proj.url);
+    loadInfoPanel(proj.title, proj.flairs, proj.images, proj.videos, proj.body, proj.collabs, proj.url);
     loadOverlay();
 }
 
