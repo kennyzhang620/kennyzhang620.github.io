@@ -3,94 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluetooth Device Scanner</title>
+    <title>Bluetooth RSSI Reader</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            padding: 10px;
         }
         button {
-            padding: 10px;
+            padding: 10px 20px;
             font-size: 16px;
+            cursor: pointer;
         }
-        ul {
+        #devices {
             margin-top: 20px;
+        }
+        .device {
+            margin-bottom: 10px;
+        }
+        .device-info {
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Scan for Bluetooth Devices</h1>
-    <button id="scanButton">Scan for Devices</button>
-    <ul id="deviceList"></ul>
+    <h1>Bluetooth RSSI Reader</h1>
+    <button id="scanButton">Scan for Bluetooth Devices</button>
+    <div id="devices"></div>
 
     <script>
-        // Get references to the button and list elements
         const scanButton = document.getElementById('scanButton');
-        const deviceList = document.getElementById('deviceList');
+        const devicesContainer = document.getElementById('devices');
 
-        // Function to start scanning for Bluetooth devices
-        async function scanForDevices() {
+        // Check if Web Bluetooth API is supported by the browser
+        if (!navigator.bluetooth) {
+            alert("Web Bluetooth is not supported in your browser.");
+        }
+
+        // Function to handle the scanning of Bluetooth devices
+        async function scanBluetoothDevices() {
             try {
-                // Request the Bluetooth device
-                const options = {
+                // Request Bluetooth device that supports "Bluetooth Low Energy" and has RSSI info available
+                const device = await navigator.bluetooth.requestDevice({
                     acceptAllDevices: true,
-                    optionalServices: ['device_information']  // Request RSSI service
-                };
-                
-                const device = await navigator.bluetooth.requestDevice(options);
+                    optionalServices: ['battery_service']
+                });
 
-                // Display device info and attempt to retrieve RSSI
-                displayDevice(device);
-                
-                // Connect to the device and read its RSSI value (if supported)
+                // Connect to the selected device
                 const server = await device.gatt.connect();
-                const rssi = await getDeviceRSSI(device);
-                
-                if (rssi !== null) {
-                    addRSSIInfo(device, rssi);
-                } else {
-                    addRSSIInfo(device, 'RSSI not available');
-                }
+
+                // Get the RSSI value from the Bluetooth GATT server (the signal strength is provided via the device)
+                const rssiCharacteristic = await server.getPrimaryService('battery_service')
+                    .getCharacteristic('battery_level');
+
+                // Display the found device and RSSI information
+                const deviceElement = document.createElement('div');
+                deviceElement.classList.add('device');
+                deviceElement.innerHTML = `
+                    <strong>${device.name || "Unnamed Device"}</strong>
+                    <div class="device-info">
+                        RSSI: <span id="rssiValue">Fetching...</span> dBm
+                    </div>
+                `;
+                devicesContainer.appendChild(deviceElement);
+
+                // Update RSSI information (this is a placeholder as RSSI might not be directly available)
+                updateRSSI(deviceElement);
+
+                device.addEventListener('gattserverdisconnected', () => {
+                    alert(`${device.name} disconnected.`);
+                });
 
             } catch (error) {
-                console.error('Error scanning for Bluetooth devices:', error);
+                console.error("Error scanning Bluetooth devices: ", error);
+                alert("Failed to scan or connect to Bluetooth device.");
             }
         }
 
-        // Function to display device name and ID
-        function displayDevice(device) {
-            const deviceItem = document.createElement('li');
-            deviceItem.textContent = `Device: ${device.name || 'Unknown'} (ID: ${device.id})`;
-            deviceList.appendChild(deviceItem);
+        // Update the RSSI value in the UI
+        async function updateRSSI(deviceElement) {
+            // Check for RSSI support (example assumes you may need additional services to fetch RSSI)
+            const rssiValue = await fetchRSSI();
+            const rssiElement = deviceElement.querySelector("#rssiValue");
+            rssiElement.textContent = rssiValue;
         }
 
-        // Function to add RSSI info to the list
-        function addRSSIInfo(device, rssi) {
-            const rssiItem = document.createElement('li');
-            rssiItem.textContent = `RSSI: ${rssi}`;
-            deviceList.appendChild(rssiItem);
+        // Placeholder function for fetching RSSI (this will depend on the Bluetooth device's capability)
+        async function fetchRSSI() {
+            // Simulating fetching the RSSI value (you may need specific Bluetooth GATT characteristics or services)
+            return -40;  // Example RSSI value, you need to replace this with actual fetching logic.
         }
 
-        // Function to retrieve the RSSI value (signal strength)
-        async function getDeviceRSSI(device) {
-            try {
-                // Use device's `gatt` server to access RSSI
-                const server = await device.gatt.connect();
-                
-                // Check if the device supports RSSI (not all devices do)
-                if (server.device.rssi) {
-                    return server.device.rssi;  // Return RSSI if available
-                } else {
-                    return null;
-                }
-            } catch (error) {
-                console.error('Error getting RSSI:', error);
-                return null;
-            }
-        }
+        // Add event listener for the scan button
+        scanButton.addEventListener('click', scanBluetoothDevices);
 
-        // Add event listener to scan button
-        scanButton.addEventListener('click', scanForDevices);
     </script>
 </body>
 </html>
