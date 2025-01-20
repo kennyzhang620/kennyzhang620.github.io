@@ -465,10 +465,10 @@ function loadSuccess(csvD) {
     console.log("test");
     const res = JSON.parse(csvD);
     console.log(res);
-    project = res.projects;
-    jobdata = res.jobs;
-    volunteerdata = res.volunt;
-    awardsdata = res.awar;
+    project = res.projects.filter(val => val.displayWebsite == true);
+    jobdata = res.jobs.filter(val => val.displayWebsite == true);
+    volunteerdata = res.volunt.filter(val => val.displayWebsite == true);
+    awardsdata = res.awar.filter(val => val.displayWebsite == true);
 
     load_projects(project, 'project')
     load_jobs(jobdata, 'jobdata')
