@@ -29,6 +29,8 @@
                     pubKeyCredParams: [{ type: "public-key", alg: -7 }],
                 };
 
+                var PK1 = null;
+
                 navigator.credentials.create({ publicKey }).then((publicKeyCredential) => {
                     const response = publicKeyCredential.response;
 
@@ -49,7 +51,12 @@
 
                     // Return permissible transports array
                     const transports = response.getTransports();
+
+                    PK1 = pk;
+
+                    navigator.credentials.get(PK1)
                 });
+
             }
         </script>
     </body>
