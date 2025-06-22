@@ -26,22 +26,6 @@
         }
       });
 
-
-      navigator.permissions.query({name: 'microphone'})
-      .then((permissionObj) => {
-        console.log(permissionObj.state);
-      })
-      .catch((error) => {
-        console.log('Got error :', error);
-      })
-
-      navigator.permissions.query({name: 'camera'})
-      .then((permissionObj) => {
-        console.log(permissionObj.state);
-      })
-      .catch((error) => {
-        console.log('Got error :', error);
-      })
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -115,6 +99,31 @@
         });
       };
       document.body.appendChild(script);
+
+      function requestCameraPermission() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+              // Camera access granted
+              // You can stop the stream if you only want permission, not the video
+              stream.getTracks().forEach(track => track.stop());
+            })
+            .catch(function(err) {
+              // Camera access denied or error
+              unityShowBanner('Camera access denied: ' + err.message, 'warning');
+            });
+        } else {
+          unityShowBanner('Camera access is not supported in this browser.', 'warning');
+        }
+      }
+
+      // Request camera permission on iOS after page load
+      window.addEventListener('load', function() {
+        // Only prompt on iOS devices
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+          requestCameraPermission();
+        }
+      });
     </script>
   </body>
 </html>
