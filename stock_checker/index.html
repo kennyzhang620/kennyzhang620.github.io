@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrambler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Scrambler</h1>
+      <p class="subtitle">Client-side AES-256 encryption &amp; decryption</p>
+    </header>
+
+    <main class="panels">
+      <section class="panel">
+        <h2>Encrypt</h2>
+        <label for="encrypt-text">Plaintext</label>
+        <textarea id="encrypt-text" rows="6" placeholder="Enter text to encrypt…"></textarea>
+
+        <label for="encrypt-password">Password</label>
+        <input type="password" id="encrypt-password" placeholder="Enter password" autocomplete="off">
+
+        <button id="encrypt-btn" type="button">Encrypt</button>
+
+        <label for="encrypt-output">Ciphertext (Base64)</label>
+        <textarea id="encrypt-output" rows="6" readonly placeholder="Encrypted output will appear here…"></textarea>
+        <button id="copy-encrypt-btn" type="button" class="secondary" disabled>Copy</button>
+      </section>
+
+      <section class="panel">
+        <h2>Decrypt</h2>
+        <label for="decrypt-ciphertext">Ciphertext (Base64)</label>
+        <textarea id="decrypt-ciphertext" rows="6" placeholder="Paste base64 ciphertext…"></textarea>
+
+        <label for="decrypt-password">Password</label>
+        <input type="password" id="decrypt-password" placeholder="Enter password" autocomplete="off">
+
+        <button id="decrypt-btn" type="button">Decrypt</button>
+
+        <label for="decrypt-output">Plaintext</label>
+        <textarea id="decrypt-output" rows="6" readonly placeholder="Decrypted output will appear here…"></textarea>
+        <button id="copy-decrypt-btn" type="button" class="secondary" disabled>Copy</button>
+      </section>
+    </main>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <footer>
+      <p>All encryption runs locally in your browser. Nothing is sent to a server.</p>
+    </footer>
+  </div>
+
+  <script src="crypto.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
