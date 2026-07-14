@@ -282,7 +282,7 @@ function createCellJob(job) {
                             </div>
                         <div class="proj_cell" text-align:center;">
                             <h4 id="role">${job.title}</h4>
-                        <div id="resp" style="text-align:left;">${job.description}</div>
+                        <div id="resp" style="text-align:left;">${job.description.replace("\\\\","").replace("textbf").replace("[","").replace("{","").replace("}", "").replace("]","")}</div>
                         </div>
                         </div>
                     </div>
