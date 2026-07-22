@@ -206,7 +206,7 @@ function clearElements(classL) {
 }
 
 function filterText(strText) {
-return strText.replace("\\","").replace("textbf", "").replace("[","").replace("{","").replace("}", "").replace("]","")
+return strText.replace("textbf", "")
 }
 
 function generateBtn(url) {
