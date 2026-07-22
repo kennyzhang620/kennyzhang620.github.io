@@ -206,7 +206,7 @@ function clearElements(classL) {
 }
 
 function filterText(strText) {
-return strText.normalize('NFC').replace("\\", "").replace("textbf", "").replace('\\textbf{', "").replace("{", "").replace("}", "")
+return strText.replace("\\/g", "").replace("textbf/g", "").replace("{/g", "").replace("}/g", "")
 }
 
 function generateBtn(url) {
