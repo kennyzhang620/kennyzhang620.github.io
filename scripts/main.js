@@ -275,7 +275,8 @@ function createCellProj(proj, dataset, ind) {
 }
 
 function createCellJob(job) {
-	console.log(job.description)
+	const ft = filterText(job.description)
+	console.log(ft)
     const HTMLL =  `
                     <div class="cell_outer_1">
                         <div class="cell_outer_2">
@@ -287,7 +288,7 @@ function createCellJob(job) {
                             </div>
                         <div class="proj_cell" text-align:center;">
                             <h4 id="role">${job.title}</h4>
-                        <div id="resp" style="text-align:left;">${filterText(job.description)}</div>
+                        <div id="resp" style="text-align:left;">${ft}</div>
                         </div>
                         </div>
                     </div>
