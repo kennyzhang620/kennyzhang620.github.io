@@ -275,6 +275,7 @@ function createCellProj(proj, dataset, ind) {
 }
 
 function createCellJob(job) {
+	console.log(job.description)
     const HTMLL =  `
                     <div class="cell_outer_1">
                         <div class="cell_outer_2">
