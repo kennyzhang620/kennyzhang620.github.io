@@ -205,6 +205,10 @@ function clearElements(classL) {
 
 }
 
+function filterText(strText) {
+return strText.replace("\\","").replace("textbf", "").replace("[","").replace("{","").replace("}", "").replace("]","")
+}
+
 function generateBtn(url) {
     const htmlL = `<a href="${url}">
                 <div id='btn' class="button button_nav"style="text-align:center;">
@@ -282,7 +286,7 @@ function createCellJob(job) {
                             </div>
                         <div class="proj_cell" text-align:center;">
                             <h4 id="role">${job.title}</h4>
-                        <div id="resp" style="text-align:left;">${job.description.replace("\\\\","").replace("textbf").replace("[","").replace("{","").replace("}", "").replace("]","")}</div>
+                        <div id="resp" style="text-align:left;">${filterText(job.description)}</div>
                         </div>
                         </div>
                     </div>
